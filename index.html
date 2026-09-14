@@ -49,15 +49,11 @@
 
     <!-- ============================================================ HERO -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__board" aria-live="polite">
-        <span class="board__label">Now serving</span>
-        <span class="board__num" id="board-serving">A-000</span>
-        <span class="board__sep" aria-hidden="true">·</span>
-        <span class="board__label">Your number</span>
-        <span class="board__num" id="board-yours">A-000</span>
-        <span class="board__sep" aria-hidden="true">·</span>
-        <span class="board__note">Please be seated</span>
-      </div>
+      <p class="hero__board">
+        <span class="board__label" id="sun-label">Sunset in Storrs</span>
+        <span class="board__num" id="sun-time">&mdash;</span>
+        <span class="board__note" id="sun-rel">&mdash;</span>
+      </p>
 
       <div class="hero__grid">
         <div class="hero__text">
@@ -214,7 +210,7 @@
           <div class="piece__media">
             <div class="frame frame--4x3 pending" aria-hidden="true">
               <div class="pending__screen">
-                <span class="pending__row"><span>Ticket</span><span id="pending-ticket">A-000</span></span>
+                <span class="pending__row"><span>Case</span><span>Hartwell, M.</span></span>
                 <span class="pending__row"><span>Status</span><span class="pending__blink">Pending</span></span>
                 <span class="pending__row"><span>Est. wait</span><span>&mdash;</span></span>
               </div>

@@ -211,9 +211,10 @@ main { position: relative; z-index: 1; }
   font-variant-numeric: tabular-nums;
 }
 .board__sep { color: var(--line); }
-.board__note { margin-left: auto; }
+.board__note { margin-left: auto; color: var(--ink-2); }
 @media (max-width: 640px) {
-  .board__note { display: none; }
+  .board__note { margin-left: 0; width: 100%; }
+  .board__sep { display: none; }
 }
 
 .hero__grid {
