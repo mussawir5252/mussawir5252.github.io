@@ -47,24 +47,24 @@
   }
 
   function sunset() {
-    var label = document.getElementById('sun-label');
+    var line = document.getElementById('sun-line');
     var time = document.getElementById('sun-time');
     var rel = document.getElementById('sun-rel');
-    if (!label || !time || !rel) return;
+    if (!line || !time || !rel) return;
     function update() {
       var now = new Date();
       var today = storrsNow();
       var t = solarTimes(today, STORRS.lat, STORRS.lon);
       if (!t) return;
       if (now < t.set) {
-        label.textContent = 'Sunset in Storrs';
+        line.firstChild.textContent = 'Sunset in Storrs is at ';
         time.textContent = clock12(t.set);
-        rel.textContent = relative(t.set - now) + ' from now';
+        rel.textContent = ', ' + relative(t.set - now) + ' from now';
       } else {
         var tomorrow = solarTimes(new Date(today.getTime() + 86400000), STORRS.lat, STORRS.lon);
-        label.textContent = 'The sun set in Storrs at';
+        line.firstChild.textContent = 'The sun set in Storrs at ';
         time.textContent = clock12(t.set);
-        rel.textContent = 'It rises again at ' + clock12(tomorrow.rise);
+        rel.textContent = '. It rises again at ' + clock12(tomorrow.rise);
       }
     }
     update();
