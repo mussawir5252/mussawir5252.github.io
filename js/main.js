@@ -46,6 +46,14 @@
     return h + ' h ' + (m < 10 ? '0' : '') + m + ' min';
   }
 
+  /* The favicon follows the same clock: a sun by day, a line of it after dark. */
+  function favicon(isNight) {
+    var link = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+    if (!link) return;
+    var want = isNight ? 'assets/favicon-night.svg' : 'assets/favicon.svg';
+    if (link.getAttribute('href').indexOf(want) === -1) link.setAttribute('href', want);
+  }
+
   function sunset() {
     var line = document.getElementById('sun-line');
     var time = document.getElementById('sun-time');
@@ -56,6 +64,7 @@
       var today = storrsNow();
       var t = solarTimes(today, STORRS.lat, STORRS.lon);
       if (!t) return;
+      favicon(now >= t.set || now < t.rise);
       if (now < t.set) {
         line.firstChild.textContent = 'Sunset in Storrs is at ';
         time.textContent = clock12(t.set);
