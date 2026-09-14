@@ -121,12 +121,12 @@ main { position: relative; z-index: 1; }
 
 /* Two quiet type roles. Metadata is italic and dimmer; labels are upright and smaller. */
 .meta, .piece__meta, .piece__status, .piece__aside, .section__sub, .foot__row,
-.frame__cap, .tvc__item span, .credits__role, .contact__where, .hero__sun {
+.frame__cap, .credits__role, .contact__where, .hero__sun {
   font-size: 0.95rem;
   font-style: italic;
   color: var(--ink-3);
 }
-.label, .facts__label, .sides__label, .record__h, .piece__facts dt {
+.label, .record__h, .piece__facts dt {
   font-size: 0.95rem;
   font-weight: 500;
   font-style: normal;
@@ -187,8 +187,10 @@ main { position: relative; z-index: 1; }
   align-items: end;
 }
 @media (min-width: 900px) {
-  .hero__grid { grid-template-columns: 1.05fr 1fr; }
+  .hero__grid { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
 }
+.hero__figure { max-width: 26rem; width: 100%; justify-self: end; }
+@media (max-width: 899px) { .hero__figure { max-width: 22rem; justify-self: start; } }
 
 .hero__title {
   font-size: clamp(3.4rem, 11vw, 7.5rem);
@@ -250,8 +252,10 @@ main { position: relative; z-index: 1; }
   background: linear-gradient(180deg, transparent 60%, rgba(27, 29, 25, 0.25));
 }
 .frame--link { display: block; }
+.frame--contain { display: grid; place-items: center; background: var(--paper-2); border: 1px solid var(--line-soft); }
+.frame--contain img { width: auto; height: auto; max-width: 56%; max-height: 82%; object-fit: contain; box-shadow: 0 18px 40px -24px rgba(0,0,0,0.7); }
 
-.hero__figure img { filter: saturate(0.92); }
+.hero__figure img { filter: saturate(0.85) contrast(1.02); }
 .frame__cap {
   position: absolute; left: 0; right: 0; bottom: 0;
   display: flex; justify-content: space-between; gap: 1rem;
@@ -278,7 +282,7 @@ main { position: relative; z-index: 1; }
   font-variation-settings: "opsz" 144, "SOFT" 30;
   margin-bottom: 0.5rem;
 }
-.section__sub { max-width: 50ch; font-size: 1.05rem; }
+.section__sub { max-width: 60ch; font-size: 1.05rem; }
 
 /* --------------------------------------------------------------------------
    Pieces of work
@@ -360,15 +364,16 @@ main { position: relative; z-index: 1; }
 @media (min-width: 700px) { .strip { grid-template-columns: repeat(4, 1fr); } }
 .strip__item img { filter: saturate(0.85); }
 
-/* Smaller pieces grid */
-.pieces {
+/* Other work: four cards, one thumbnail size */
+.cards {
   display: grid; gap: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
   grid-template-columns: 1fr;
 }
-@media (min-width: 760px) { .pieces { grid-template-columns: 1fr 1fr; } }
-.piece--small { grid-template-columns: 1fr; align-content: start; }
-.piece--small .piece__title { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
-.piece--small .piece__body > p:not([class]) { font-size: 0.97em; }
+@media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+.card { display: grid; gap: 1.25rem; align-content: start; }
+.card__title { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 400; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
+.card__body > p:not([class]) { max-width: var(--measure); color: var(--ink-2); font-size: 0.97em; }
+.card__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 
 /* YouTube facade */
 .yt { cursor: pointer; }
@@ -412,40 +417,13 @@ main { position: relative; z-index: 1; }
 .pending__row span:first-child { color: #8d9287; }
 .pending__row span:last-child { color: #f0a24a; font-variant-numeric: tabular-nums; }
 
-/* TVC pair */
-.tvc { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-.tvc__item { display: grid; gap: 0.4rem; }
-.tvc__item img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; filter: grayscale(0.6) contrast(0.95); border-radius: var(--radius); transition: filter var(--quick); }
-.tvc__item:hover img, .tvc__item:focus-visible img { filter: none; }
-.tvc__item span { font-size: 0.9rem; }
-
 /* --------------------------------------------------------------------------
-   About: both sides
+   About
    -------------------------------------------------------------------------- */
 
-.sides {
-  display: grid; gap: 2rem;
-  grid-template-columns: 1fr;
-  margin-bottom: clamp(2.5rem, 6vw, 4rem);
-}
-.sides__portrait { max-width: 20rem; }
-.sides__portrait img { filter: saturate(0.8) contrast(1.02); }
-.sides__label { margin-bottom: 0.75rem; }
-.sides__col p { color: var(--ink-2); max-width: 44ch; }
-.sides__col p:last-child { color: var(--ink); }
-@media (min-width: 760px) {
-  .sides { grid-template-columns: 1fr 1fr; gap: 2rem clamp(2rem, 6vw, 5rem); }
-  .sides__portrait { grid-column: 1 / -1; max-width: 16rem; }
-  .sides__col { position: relative; }
-  .sides__col + .sides__col::before {
-    content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * clamp(2rem, 6vw, 5rem) / 2);
-    width: 1px; background: var(--line);
-  }
-}
-@media (min-width: 1000px) {
-  .sides { grid-template-columns: 0.7fr 1fr 1fr; gap: 0 clamp(2rem, 5vw, 4rem); align-items: start; }
-  .sides__portrait { grid-column: auto; max-width: none; }
-}
+.prose { max-width: 64ch; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.prose p { color: var(--ink-2); }
+.prose p:last-child { color: var(--ink); }
 
 .statement {
   margin: 0 auto clamp(2.5rem, 6vw, 4rem);
@@ -460,17 +438,34 @@ main { position: relative; z-index: 1; }
 }
 .statement cite { font-size: 0.95rem; color: var(--ink-3); }
 
-.facts {
-  display: grid; gap: 1.5rem 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  padding-top: 2rem; border-top: 1px solid var(--line-soft);
+/* --------------------------------------------------------------------------
+   Teaching
+   -------------------------------------------------------------------------- */
+
+.courses {
+  display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1fr;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
-.facts__label { margin-bottom: 0.3rem; }
-.facts__item p:last-child { color: var(--ink-2); font-size: 0.97em; }
-.facts__item [lang="ur"], .facts__item [lang="sd"] { font-family: var(--urdu); font-size: 1.15em; }
+@media (min-width: 760px) { .courses { grid-template-columns: 1fr 1fr; } }
+.course__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.3rem; }
+.course > .piece__meta { margin-bottom: 0.75rem; }
+.course > p:not([class]) { color: var(--ink-2); max-width: 50ch; }
+
+.students { padding-top: 2rem; border-top: 1px solid var(--line-soft); }
+.students__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.5rem; }
+.students__intro { color: var(--ink-2); max-width: 60ch; }
+.students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+.students__list:empty { display: none; }
+@media (min-width: 760px) { .students__list { grid-template-columns: 1fr 1fr; } }
+.student { display: grid; gap: 0.15rem; padding: 1rem 0; border-top: 1px solid var(--line-soft); }
+.student__kind { font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
+.student__title { font-size: 1.15rem; color: var(--ink); border-bottom: 1px solid var(--amber); width: fit-content; }
+.student__title:hover, .student__title:focus-visible { color: var(--amber-text); }
+.student__by { font-size: 0.95rem; color: var(--ink-2); }
 
 /* --------------------------------------------------------------------------
-   Teaching & record
+   Record
    -------------------------------------------------------------------------- */
 
 .record { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
@@ -502,6 +497,8 @@ main { position: relative; z-index: 1; }
   transition: color var(--quick), border-color var(--quick);
 }
 .contact__links a:hover, .contact__links a:focus-visible { color: var(--ink); border-color: var(--amber); }
+.contact__where { max-width: 60ch; }
+.contact__where [lang="ur"], .contact__where [lang="sd"] { font-family: var(--urdu); font-style: normal; font-size: 1.15em; }
 
 /* --------------------------------------------------------------------------
    Footer with a sky

@@ -50,15 +50,16 @@
   </script>
 </head>
 <body>
-  <a class="skip" href="#work">Skip to work</a>
+  <a class="skip" href="#films">Skip to the films</a>
 
   <header class="top" id="top">
     <nav class="top__nav" aria-label="Primary">
       <a class="top__name" href="#top">Musawir Abrar</a>
       <ul class="top__links">
-        <li><a href="#work">Work</a></li>
+        <li><a href="#films">Films</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#record">Record</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -81,31 +82,31 @@
             <span class="hero__thesis-mark" aria-hidden="true">&ldquo;</span>The fundamental power of the cinematic medium is to generate empathy.<span class="hero__thesis-mark" aria-hidden="true">&rdquo;</span>
           </p>
           <div class="hero__cta">
-            <a class="btn" href="#work">See the work</a>
-            <a class="btn btn--ghost" href="#about">Who he is</a>
+            <a class="btn" href="#films">See the films</a>
+            <a class="btn btn--ghost" href="#about">About him</a>
           </div>
         </div>
 
-        <figure class="hero__figure frame frame--4x3">
-          <img src="assets/img/ptd-john-1600.jpg"
-               srcset="assets/img/ptd-john-800.jpg 800w, assets/img/ptd-john-1600.jpg 1600w"
-               sizes="(min-width: 900px) 50vw, 100vw"
-               width="1600" height="1200"
-               alt="An older man in a frayed khaki work shirt, mid-sentence, in front of a dark office shelf. A still from Pay the Difference."
+        <figure class="hero__figure frame frame--3x4">
+          <img src="assets/img/musawir-900.jpg"
+               srcset="assets/img/musawir-450.jpg 450w, assets/img/musawir-900.jpg 900w"
+               sizes="(min-width: 900px) 36vw, 80vw"
+               width="900" height="1200"
+               alt="Musawir Abrar in a dark blazer, smiling slightly, in front of a University of Connecticut banner."
                fetchpriority="high">
           <figcaption class="frame__cap">
-            <span class="frame__cap-title">Pay the Difference</span>
-            <span class="frame__cap-meta">2026, in post-production</span>
+            <span class="frame__cap-title">Musawir Abrar</span>
+            <span class="frame__cap-meta">Storrs, Connecticut</span>
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ============================================================ WORK -->
-    <section class="section work" id="work" aria-labelledby="work-title">
+    <!-- ============================================================ FILMS -->
+    <section class="section films" id="films" aria-labelledby="films-title">
       <div class="section__head">
-        <h2 class="section__title" id="work-title">Work</h2>
-        <p class="section__sub">Two films, one book, one experiment, and the jobs in between.</p>
+        <h2 class="section__title" id="films-title">Films</h2>
+        <p class="section__sub">Two narrative shorts. One finished, one nearly.</p>
       </div>
 
       <!-- Pay the Difference -->
@@ -116,7 +117,7 @@
                  srcset="assets/img/ptd-john-800.jpg 800w, assets/img/ptd-john-1600.jpg 1600w"
                  sizes="(min-width: 900px) 55vw, 100vw"
                  width="800" height="600" loading="lazy"
-                 alt="John Hartwell, an aging handyman, in a lawyer's office.">
+                 alt="An older man in a frayed khaki work shirt, mid-sentence, in front of a dark office shelf. A still from Pay the Difference.">
           </div>
           <p class="piece__status">In post-production.</p>
         </div>
@@ -179,27 +180,31 @@
         </div>
       </article>
 
-      <!-- Strip of stills -->
       <div class="strip" role="group" aria-label="Stills from Color of Sunset">
         <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-frame-800.jpg" width="800" height="450" loading="lazy" alt="An empty wooden picture frame beside an old camera on a desk."></figure>
         <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-ridge-800.jpg" width="800" height="450" loading="lazy" alt="Two men with their backs to the camera look out over a green valley."></figure>
         <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-reflection-800.jpg" width="800" height="450" loading="lazy" alt="Two figures reflected upside down in still green water."></figure>
         <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-arch-800.jpg" width="800" height="450" loading="lazy" alt="A man stands inside a crumbling white stone arch."></figure>
       </div>
+    </section>
 
-      <!-- Smaller pieces -->
-      <div class="pieces">
+    <!-- ============================================================ OTHER WORK -->
+    <section class="section more" id="work" aria-labelledby="work-title">
+      <div class="section__head">
+        <h2 class="section__title" id="work-title">Other work</h2>
+        <p class="section__sub">A book, an experiment, a channel, and the day job.</p>
+      </div>
 
-        <article class="piece piece--small" id="benedicti">
-          <div class="piece__media">
-            <div class="frame frame--book">
-              <img src="assets/img/benedicti-cover.jpg" loading="lazy" width="400" height="600"
-                   alt="Cover of the novella Benedicti and the Magia Regna.">
-            </div>
+      <div class="cards">
+
+        <article class="card" id="benedicti">
+          <div class="frame frame--4x3 frame--contain">
+            <img src="assets/img/benedicti-cover.jpg" loading="lazy" width="288" height="400"
+                 alt="Cover of the novella Benedicti and the Magia Regna: a child on a glowing blue path under a rainbow.">
           </div>
-          <div class="piece__body">
+          <div class="card__body">
             <p class="piece__meta">Novella, 2017. Published by Daastan.</p>
-            <h3 class="piece__title">Benedicti &amp; The Magia Regna</h3>
+            <h3 class="card__title">Benedicti &amp; The Magia Regna</h3>
             <p>
               A five-year-old waits every night for his magic stones, which take him to a world
               with everything he wants except his parents. Written during an engineering degree,
@@ -209,19 +214,17 @@
           </div>
         </article>
 
-        <article class="piece piece--small" id="critical-vr">
-          <div class="piece__media">
-            <div class="frame frame--4x3 pending" aria-hidden="true">
-              <div class="pending__screen">
-                <span class="pending__row"><span>Window</span><span>Closed</span></span>
-                <span class="pending__row"><span>Status</span><span class="pending__blink">Pending</span></span>
-                <span class="pending__row"><span>Est. wait</span><span>&mdash;</span></span>
-              </div>
+        <article class="card" id="critical-vr">
+          <div class="frame frame--4x3 pending" aria-hidden="true">
+            <div class="pending__screen">
+              <span class="pending__row"><span>Window</span><span>Closed</span></span>
+              <span class="pending__row"><span>Status</span><span>Pending</span></span>
+              <span class="pending__row"><span>Est. wait</span><span>&mdash;</span></span>
             </div>
           </div>
-          <div class="piece__body">
+          <div class="card__body">
             <p class="piece__meta">Interactive. In progress, fall 2026.</p>
-            <h3 class="piece__title">Critical VR Design</h3>
+            <h3 class="card__title">Critical VR Design</h3>
             <p>
               A seated VR companion to <em>Pay the Difference</em>. A series of institutional
               waiting rooms where you can sit, look, and listen, and nothing you do helps.
@@ -231,48 +234,39 @@
           </div>
         </article>
 
-        <article class="piece piece--small" id="essays">
-          <div class="piece__media">
-            <a class="frame frame--16x9 frame--link" href="https://www.youtube.com/@analyzingglobalcinema6805" rel="noopener" aria-label="Analyzing Global Cinema on YouTube">
-              <img src="assets/img/cos-title-800.jpg" width="800" height="450" loading="lazy"
-                   alt="A camera and picture frame on a desk, the Urdu word Manzar over them.">
-            </a>
-          </div>
-          <div class="piece__body">
-            <p class="piece__meta">Talks and essays.</p>
-            <h3 class="piece__title">Analyzing Global Cinema</h3>
+        <article class="card" id="essays">
+          <a class="frame frame--4x3 frame--link" href="https://www.youtube.com/@analyzingglobalcinema6805" rel="noopener" aria-label="Analyzing Global Cinema on YouTube">
+            <img src="assets/img/essays-800.jpg" width="800" height="600" loading="lazy"
+                 alt="A camera and a picture frame on a desk, the Urdu word Manzar over them.">
+          </a>
+          <div class="card__body">
+            <p class="piece__meta">Video essays, ongoing.</p>
+            <h3 class="card__title">Analyzing Global Cinema</h3>
             <p>
-              Video essays and film analysis on YouTube, and papers on the same subjects.
+              A YouTube channel of video essays and close readings of films from around the
+              world. Where the teaching and the cinephilia meet.
             </p>
-            <ul class="list">
-              <li>&ldquo;Abbas Kiarostami&rsquo;s Methods of Bridging Documentary &amp; Fiction: A Study of <em>Close-Up</em>.&rdquo; University Film &amp; Video Association conference, 2025.</li>
-              <li>&ldquo;Film: The Ultimate Empathy Machine.&rdquo; Languages Graduate Student Association conference, UConn, 2025.</li>
-            </ul>
             <a class="link" href="https://www.youtube.com/@analyzingglobalcinema6805" rel="noopener">Watch the channel</a>
           </div>
         </article>
 
-        <article class="piece piece--small" id="commercial">
-          <div class="piece__media">
-            <div class="tvc">
-              <a class="tvc__item" href="https://www.youtube.com/watch?v=VJdwESPRx1E" rel="noopener">
-                <img src="https://i.ytimg.com/vi/VJdwESPRx1E/mqdefault.jpg" width="320" height="180" loading="lazy" alt="">
-                <span>Tower 21, creative lead</span>
-              </a>
-              <a class="tvc__item" href="https://www.youtube.com/watch?v=_1qI3-rH-Qc" rel="noopener">
-                <img src="https://i.ytimg.com/vi/_1qI3-rH-Qc/mqdefault.jpg" width="320" height="180" loading="lazy" alt="">
-                <span>Beach Resort, creative lead</span>
-              </a>
-            </div>
-          </div>
-          <div class="piece__body">
+        <article class="card" id="commercial">
+          <a class="frame frame--4x3 frame--link" href="https://www.youtube.com/watch?v=VJdwESPRx1E" rel="noopener" aria-label="Tower 21 commercial on YouTube">
+            <img src="assets/img/tower-800.jpg" width="800" height="600" loading="lazy"
+                 alt="A rendered high-rise against an orange sunset, from a television commercial.">
+          </a>
+          <div class="card__body">
             <p class="piece__meta">Commercial work, 2023 to 2024. Bayut Studios, Pakistan.</p>
-            <h3 class="piece__title">The day job</h3>
+            <h3 class="card__title">The day job</h3>
             <p>
               Concept, script, and storyboards for television spots for real-estate projects,
-              then directing the animators and editors who built them. Also assistant director on
-              a television anthology series for Express Entertainment. Where he learned to tell a
-              clear visual story under real constraints.
+              then directing the animators and editors who built them. Also assistant director
+              on a television anthology series for Express Entertainment. Where he learned to
+              tell a clear visual story under real constraints.
+            </p>
+            <p class="card__links">
+              <a class="link" href="https://www.youtube.com/watch?v=VJdwESPRx1E" rel="noopener">Tower 21</a>
+              <a class="link" href="https://www.youtube.com/watch?v=_1qI3-rH-Qc" rel="noopener">Beach Resort</a>
             </p>
           </div>
         </article>
@@ -283,44 +277,32 @@
     <!-- ============================================================ ABOUT -->
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="section__head">
-        <h2 class="section__title" id="about-title">Both sides</h2>
-        <p class="section__sub">He went to engineering school and came out a filmmaker. Both are still in the room.</p>
+        <h2 class="section__title" id="about-title">About</h2>
+        <p class="section__sub">He went to engineering school and came out a filmmaker.</p>
       </div>
 
-      <div class="sides">
-        <figure class="sides__portrait frame frame--3x4">
-          <img src="assets/img/musawir-450.jpg"
-               srcset="assets/img/musawir-450.jpg 450w, assets/img/musawir-900.jpg 900w"
-               sizes="(min-width: 900px) 26vw, (min-width: 760px) 40vw, 60vw"
-               width="450" height="600" loading="lazy"
-               alt="Musawir Abrar in a dark blazer, smiling slightly, in front of a University of Connecticut banner.">
-          <figcaption class="frame__cap"><span class="frame__cap-title">Musawir Abrar</span><span class="frame__cap-meta">Storrs</span></figcaption>
-        </figure>
-        <div class="sides__col">
-          <h3 class="sides__label">The engineer</h3>
-          <p>
-            Musawir Abrar trained as a civil engineer at the University of Engineering &amp;
-            Technology in Lahore. In his third year a friend showed him films from outside
-            Pakistan. One of them was Bergman&rsquo;s <em>Scenes from a Marriage</em>. He watched
-            it in one sitting and knew what he wanted to do.
-          </p>
-          <p>
-            He finished the degree in 2020. He has not built a bridge.
-          </p>
-        </div>
-        <div class="sides__col">
-          <h3 class="sides__label">The storyteller</h3>
-          <p>
-            He had been writing since before the degree. A short story placed in a national
-            competition and became a novella. Screenwriting followed, then a master&rsquo;s in
-            Film &amp; Television at Beaconhouse National University, summa cum laude.
-          </p>
-          <p>
-            He now writes and directs short films about characters who go unseen, unheard, or
-            misunderstood, and teaches film writing at the University of Connecticut, where he
-            is completing an MFA.
-          </p>
-        </div>
+      <div class="prose">
+        <p>
+          Musawir Abrar trained as a civil engineer at the University of Engineering &amp;
+          Technology in Lahore. In his third year a friend showed him films from outside
+          Pakistan. One of them was Bergman&rsquo;s <em>Scenes from a Marriage</em>. He watched
+          it in one sitting and knew what he wanted to do. He finished the degree in 2020.
+          He has not built a bridge.
+        </p>
+        <p>
+          He had been writing since before the degree. A short story placed in a national
+          competition and became a novella. Screenwriting followed, then a master&rsquo;s in
+          Film &amp; Television at Beaconhouse National University, summa cum laude, and a
+          thesis film that traveled to festivals on three continents. Between degrees he wrote
+          and directed commercials and assisted on television drama in Pakistan.
+        </p>
+        <p>
+          He now writes and directs short films about characters who go unseen, unheard, or
+          misunderstood, and teaches film writing and film theory at the University of
+          Connecticut, where he is completing an MFA in Digital Media &amp; Design. He shoots
+          in long takes, so the audience has time to do its own looking. He is an avid
+          cinephile who has probably watched a film from your country.
+        </p>
       </div>
 
       <blockquote class="statement">
@@ -331,42 +313,67 @@
         </p>
         <cite>From his artist statement</cite>
       </blockquote>
-
-      <div class="facts">
-        <div class="facts__item">
-          <h3 class="facts__label">How he shoots</h3>
-          <p>Long takes. Enough time for the audience to do their own looking.</p>
-        </div>
-        <div class="facts__item">
-          <h3 class="facts__label">Who he watches</h3>
-          <p>Kiarostami, Hou Hsiao-Hsien, Lumet, von Trier, Tarkovsky, Preminger, Haneke, Farhadi, Loach.</p>
-        </div>
-        <div class="facts__item">
-          <h3 class="facts__label">Languages</h3>
-          <p lang="en">English, <span lang="ur">اردو</span>, <span lang="sd">سِنڌِي</span>, Punjabi.</p>
-        </div>
-        <div class="facts__item">
-          <h3 class="facts__label">Fair warning</h3>
-          <p>Wherever you&rsquo;re from, he has probably watched a film from your country.</p>
-        </div>
-      </div>
     </section>
 
     <!-- ============================================================ TEACHING -->
     <section class="section teaching" id="teaching" aria-labelledby="teaching-title">
       <div class="section__head">
-        <h2 class="section__title" id="teaching-title">Teaching &amp; record</h2>
-        <p class="section__sub">His second favorite thing, after making films.</p>
+        <h2 class="section__title" id="teaching-title">Teaching</h2>
+        <p class="section__sub">His second favorite thing, after making films. Instructor of Record in Digital Media &amp; Design at the University of Connecticut since 2025, and teaching assistant in the same courses the year before.</p>
+      </div>
+
+      <div class="courses">
+        <article class="course">
+          <h3 class="course__title">Film Writing</h3>
+          <p class="piece__meta">Upper-level. Cross-listed with Dramatic Arts and English.</p>
+          <p>
+            A screenwriting course. Students develop original short screenplays from idea to
+            polished draft and workshop each other&rsquo;s pages. Taught in fall 2025 and fall 2026.
+          </p>
+        </article>
+        <article class="course">
+          <h3 class="course__title">Film Theory: Auteur Study</h3>
+          <p class="piece__meta">Upper-level.</p>
+          <p>
+            A close-reading course built around individual directors and their bodies of work.
+            Students analyze films in writing and in video essays. Taught in spring 2025.
+          </p>
+        </article>
+      </div>
+
+      <div class="students" id="student-work">
+        <h3 class="students__title">Student work</h3>
+        <p class="students__intro">
+          Screenplays from Film Writing and video essays from Auteur Study will be collected
+          here, with their authors&rsquo; permission.
+        </p>
+        <!--
+          Template for a student piece. Copy one <li> per work into the <ul> below.
+          Screenplay:
+            <li class="student">
+              <span class="student__kind">Screenplay</span>
+              <a class="student__title" href="assets/students/title.pdf">Title</a>
+              <span class="student__by">Student Name, Film Writing, fall 2025</span>
+            </li>
+          Video essay:
+            <li class="student">
+              <span class="student__kind">Video essay</span>
+              <a class="student__title" href="https://youtu.be/..." rel="noopener">Title</a>
+              <span class="student__by">Student Name, Auteur Study, spring 2025</span>
+            </li>
+        -->
+        <ul class="students__list"></ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ RECORD -->
+    <section class="section record-section" id="record" aria-labelledby="record-title">
+      <div class="section__head">
+        <h2 class="section__title" id="record-title">Record</h2>
+        <p class="section__sub">Degrees, honors, service, and papers.</p>
       </div>
 
       <div class="record">
-        <div class="record__group">
-          <h3 class="record__h">Teaching</h3>
-          <ul class="record__list">
-            <li><span class="record__when">2025 to now</span><span class="record__what">Instructor of Record, Digital Media &amp; Design, University of Connecticut. Film Writing and Film Theory: Auteur Study. Cross-listed with Drama and English.</span></li>
-            <li><span class="record__when">2024 to 2025</span><span class="record__what">Teaching Assistant, same courses.</span></li>
-          </ul>
-        </div>
         <div class="record__group">
           <h3 class="record__h">Education</h3>
           <ul class="record__list">
@@ -382,6 +389,13 @@
             <li><span class="record__when">2025</span><span class="record__what">Narrative short film judge, Snake Alley Festival of Film.</span></li>
             <li><span class="record__when">2024</span><span class="record__what">Panel moderator, &ldquo;Education in Film, TV &amp; Digital Media,&rdquo; Connecticut Film &amp; TV Conference.</span></li>
             <li><span class="record__when">2023</span><span class="record__what">Erasmus Mundus scholarship, Kino Eyes European Film Masters. Dean&rsquo;s Honor List, three times.</span></li>
+          </ul>
+        </div>
+        <div class="record__group">
+          <h3 class="record__h">Talks &amp; papers</h3>
+          <ul class="record__list">
+            <li><span class="record__when">2025</span><span class="record__what">&ldquo;Abbas Kiarostami&rsquo;s Methods of Bridging Documentary &amp; Fiction: A Study of <em>Close-Up</em>.&rdquo; University Film &amp; Video Association conference, Houston.</span></li>
+            <li><span class="record__when">2025</span><span class="record__what">&ldquo;Film: The Ultimate Empathy Machine.&rdquo; Languages Graduate Student Association conference, University of Connecticut.</span></li>
           </ul>
         </div>
       </div>
@@ -401,7 +415,7 @@
           <li><a href="https://dmd.uconn.edu/person/musawir-abrar/" rel="noopener">UConn DMD</a></li>
           <li><a href="https://daastan.com/book/210" rel="noopener">Daastan</a></li>
         </ul>
-        <p class="contact__where">Bishop Center, University of Connecticut, Storrs.</p>
+        <p class="contact__where">Bishop Center, University of Connecticut, Storrs. Writes and speaks in English, <span lang="ur">اردو</span>, <span lang="sd">سِنڌِي</span>, and Punjabi.</p>
       </div>
     </section>
 
