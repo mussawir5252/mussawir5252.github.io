@@ -137,6 +137,7 @@
         box.innerHTML = '';
         box.appendChild(iframe);
         box.classList.add('is-playing');
+        track('film_played', { film: iframe.title });
       }
       if (btn) btn.addEventListener('click', play);
       box.addEventListener('click', function (e) {
@@ -197,6 +198,7 @@
     function show() {
       if (shown) return;
       shown = true;
+      track('credits_rolled', {});
       el.classList.add('is-on');
       el.setAttribute('aria-hidden', 'false');
       ['scroll', 'keydown', 'pointerdown', 'touchstart', 'wheel'].forEach(function (ev) {
@@ -234,6 +236,11 @@
       'font-family: Georgia, serif; font-style: italic; font-size: 14px; color: #d4802a;'
     );
     console.log('%cColor of Sunset, 2022. musawir.abrar@uconn.edu', 'font-family: monospace; font-size: 11px; color: #7a7468;');
+  }
+
+  /* Analytics, only if the snippet loaded. */
+  function track(name, props) {
+    if (window.posthog && typeof window.posthog.capture === 'function') window.posthog.capture(name, props);
   }
 
   function setText(id, text) {
