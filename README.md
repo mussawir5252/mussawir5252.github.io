@@ -31,8 +31,6 @@ also has to be enabled once in the PostHog project settings under Session replay
 Ad blockers drop requests to posthog.com. PostHog's managed reverse proxy is free and
 fixes that. One-time setup:
 
-1. In PostHog, open Organization settings, then Managed reverse proxy, and create one
-   with the domain `e.musawirabrar.com`. PostHog shows a CNAME target.
-2. At Porkbun, add a CNAME record: host `e`, answer the target PostHog gave you.
-3. Wait for PostHog to show the proxy as live, usually under an hour.
-4. In both HTML files, change `api_host` to `https://e.musawirabrar.com`.
+Done: `z.musawirabrar.com` is a PostHog managed reverse proxy (CNAME at Porkbun), and
+`api_host` in both HTML files points at it. If it ever needs recreating: Organization
+settings, Managed reverse proxy, new proxy, then a CNAME record at Porkbun.
