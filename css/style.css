@@ -366,15 +366,6 @@ main { position: relative; z-index: 1; }
 }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
-.piece__rule {
-  margin: 1.5rem 0; padding: 1rem 1.25rem;
-  border-left: 2px solid var(--amber);
-  background: var(--amber-soft);
-  max-width: var(--measure);
-}
-.piece__rule p { font-style: italic; font-weight: 300; margin-bottom: 0.4rem; }
-.piece__rule cite { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-
 .piece__facts {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   gap: 0.9rem 1.5rem; margin-top: 1.5rem;
