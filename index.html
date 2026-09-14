@@ -203,11 +203,29 @@
       </article>
 
       <div class="strip" role="group" aria-label="Stills from Color of Sunset">
-        <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-frame-800.jpg" width="800" height="450" loading="lazy" alt="An empty wooden picture frame beside an old camera on a desk."></figure>
-        <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-ridge-800.jpg" width="800" height="450" loading="lazy" alt="Two men with their backs to the camera look out over a green valley."></figure>
-        <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-reflection-800.jpg" width="800" height="450" loading="lazy" alt="Two figures reflected upside down in still green water."></figure>
-        <figure class="strip__item frame frame--16x9"><img src="assets/img/cos-arch-800.jpg" width="800" height="450" loading="lazy" alt="A man stands inside a crumbling white stone arch."></figure>
+        <button class="strip__item frame frame--16x9" type="button" data-full="assets/img/cos-frame.jpg" data-time="0:47" aria-label="Open still: an empty picture frame beside an old camera">
+          <img src="assets/img/cos-frame-800.jpg" width="800" height="450" loading="lazy" alt="An empty wooden picture frame beside an old camera on a desk.">
+        </button>
+        <button class="strip__item frame frame--16x9" type="button" data-full="assets/img/cos-ridge.jpg" data-time="3:39" aria-label="Open still: two men look out over a green valley">
+          <img src="assets/img/cos-ridge-800.jpg" width="800" height="450" loading="lazy" alt="Two men with their backs to the camera look out over a green valley.">
+        </button>
+        <button class="strip__item frame frame--16x9" type="button" data-full="assets/img/cos-reflection.jpg" data-time="11:40" aria-label="Open still: two figures reflected in still water">
+          <img src="assets/img/cos-reflection-800.jpg" width="800" height="450" loading="lazy" alt="Two figures reflected upside down in still green water.">
+        </button>
+        <button class="strip__item frame frame--16x9" type="button" data-full="assets/img/cos-arch.jpg" data-time="10:36" aria-label="Open still: a man inside a crumbling stone arch">
+          <img src="assets/img/cos-arch-800.jpg" width="800" height="450" loading="lazy" alt="A man stands inside a crumbling white stone arch.">
+        </button>
       </div>
+
+      <dialog class="lightbox" id="lightbox" aria-label="Still from Color of Sunset">
+        <div class="lightbox__stage">
+          <img class="lightbox__img" id="lightbox-img" alt="">
+        </div>
+        <p class="lightbox__cap"><span>Color of Sunset</span><span class="lightbox__time" id="lightbox-time"></span></p>
+        <button class="lightbox__btn lightbox__prev" type="button" data-dir="-1" aria-label="Previous still">&larr;</button>
+        <button class="lightbox__btn lightbox__next" type="button" data-dir="1" aria-label="Next still">&rarr;</button>
+        <button class="lightbox__btn lightbox__close" type="button" data-close aria-label="Close">&times;</button>
+      </dialog>
     </section>
 
     <!-- ============================================================ OTHER WORK -->

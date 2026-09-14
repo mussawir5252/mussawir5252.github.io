@@ -157,6 +157,62 @@
   }
 
   /* ------------------------------------------------------------------
+     Stills open full size. Arrow keys and swipes move between them.
+     ------------------------------------------------------------------ */
+  function lightbox() {
+    var dlg = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    var time = document.getElementById('lightbox-time');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.strip__item[data-full]'));
+    if (!dlg || !img || !items.length || typeof dlg.showModal !== 'function') return;
+    var index = 0, opener = null, touchX = null;
+
+    function show(i) {
+      index = (i + items.length) % items.length;
+      var btn = items[index];
+      img.src = btn.getAttribute('data-full');
+      img.alt = btn.querySelector('img').alt;
+      time.textContent = btn.getAttribute('data-time') || '';
+      var next = items[(index + 1) % items.length];
+      new Image().src = next.getAttribute('data-full');
+    }
+    function open(i, from) {
+      opener = from || null;
+      show(i);
+      dlg.showModal();
+      document.body.classList.add('has-lightbox');
+      track('still_opened', { time: time.textContent });
+    }
+    function close() { if (dlg.open) dlg.close(); }
+
+    items.forEach(function (btn, i) {
+      btn.addEventListener('click', function () { open(i, btn); });
+    });
+    dlg.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t.closest('[data-close]')) return close();
+      var nav = t.closest('[data-dir]');
+      if (nav) return show(index + Number(nav.getAttribute('data-dir')));
+      if (!t.closest('.lightbox__stage, .lightbox__cap')) close();
+    });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    });
+    dlg.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    dlg.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX; touchX = null;
+      if (Math.abs(dx) > 48) show(index + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    dlg.addEventListener('close', function () {
+      document.body.classList.remove('has-lightbox');
+      img.removeAttribute('src');
+      if (opener) opener.focus();
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Which section is on screen, for the nav underline.
      ------------------------------------------------------------------ */
   function current() {
@@ -263,6 +319,7 @@
   sun();
   title();
   youtube();
+  lightbox();
   current();
   credits();
   lights();
