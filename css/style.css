@@ -279,6 +279,7 @@ main { position: relative; z-index: 1; }
 .frame--4x3 { aspect-ratio: 4 / 3; }
 .frame--16x9 { aspect-ratio: 16 / 9; }
 .frame--book { aspect-ratio: 2 / 3; max-width: 18rem; }
+.frame--3x4 { aspect-ratio: 3 / 4; }
 .frame--book img { object-fit: cover; }
 
 .frame--tint::after {
@@ -500,12 +501,20 @@ main { position: relative; z-index: 1; }
   grid-template-columns: 1fr;
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
+.sides__portrait { max-width: 20rem; }
+.sides__portrait img { filter: saturate(0.8) contrast(1.02); }
 @media (min-width: 760px) {
-  .sides { grid-template-columns: 1fr 1fr; gap: 0 clamp(2rem, 6vw, 5rem); position: relative; }
-  .sides::before {
-    content: ""; position: absolute; top: 0; bottom: 0; left: 50%;
+  .sides { grid-template-columns: 1fr 1fr; gap: 2rem clamp(2rem, 6vw, 5rem); position: relative; }
+  .sides__portrait { grid-column: 1 / -1; max-width: 16rem; }
+  .sides__col { position: relative; }
+  .sides__col + .sides__col::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * clamp(2rem, 6vw, 5rem) / 2);
     width: 1px; background: var(--line);
   }
+}
+@media (min-width: 1000px) {
+  .sides { grid-template-columns: 0.7fr 1fr 1fr; gap: 0 clamp(2rem, 5vw, 4rem); align-items: start; }
+  .sides__portrait { grid-column: auto; max-width: none; }
 }
 .sides__label { margin-bottom: 1rem; }
 .sides__col p { color: var(--ink-2); max-width: 44ch; }
