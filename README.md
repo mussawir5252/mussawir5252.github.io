@@ -6,11 +6,14 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
 
 ## Editing
 
-- One page per section. `index.html` is the doorway; the sections live in
-  `films.html`, `work.html`, `about.html`, `teaching.html`, `record.html`, and
-  `contact.html`. Edit the page you want to change.
+- One page per section. `index.html` is both the front page and About: name,
+  summary, and portrait, then the longer bio. The rest live in `films.html`,
+  `teaching.html`, `work.html`, `record.html`, and `contact.html`. Edit the
+  page you want to change.
+- `about.html` is only a redirect to `/`, kept so links to the old address
+  still work. There is nothing to edit in it.
 - The header and footer are copied into every page. There is no build step, so a
-  change to the nav or the footer has to be made in all seven files. The nav marks
+  change to the nav or the footer has to be made in all six of them. The nav marks
   the current page with `aria-current="page"`.
 - `css/style.css` holds the design. Colors and type are CSS variables at the top.
 - `js/main.js` holds the small interactions. Each one is a short, named function.
