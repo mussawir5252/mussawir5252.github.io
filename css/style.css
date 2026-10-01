@@ -24,7 +24,7 @@
   --sky-bottom: #e8a35a;
   --hills: #2f342c;
 
-  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --serif: "Libre Baskerville", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
 
@@ -85,7 +85,7 @@ body {
   color: var(--ink);
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.2rem);
+  font-size: clamp(0.975rem, 0.9rem + 0.3vw, 1.075rem);
   line-height: 1.6;
   font-feature-settings: "kern", "liga", "onum";
   -webkit-font-smoothing: antialiased;
@@ -107,7 +107,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1.1; letter-spacing: -0.0
 p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 em { font-style: italic; }
-strong { font-weight: 600; }
+strong { font-weight: 700; }
 ul { margin: 0; padding: 0; list-style: none; }
 dl, dd, dt { margin: 0; }
 cite { font-style: normal; }
@@ -152,7 +152,7 @@ main { position: relative; z-index: 1; }
   max-width: 76rem; margin: 0 auto; padding: 0.7rem var(--gutter);
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem;
 }
-.top__name { font-weight: 500; color: var(--ink); padding: 0.4rem 0; }
+.top__name { font-weight: 700; color: var(--ink); padding: 0.4rem 0; }
 .top__links { display: flex; flex-wrap: wrap; gap: 0 clamp(0.9rem, 3vw, 2rem); }
 .top__links a {
   display: inline-block; position: relative; padding: 0.4rem 0; color: var(--ink-2);
@@ -197,11 +197,10 @@ main { position: relative; z-index: 1; }
 @media (max-width: 899px) { .hero__figure { max-width: 22rem; justify-self: start; } }
 
 .hero__title {
-  font-size: clamp(3.4rem, 11vw, 7.5rem);
-  font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
+  font-size: clamp(2.6rem, 8vw, 5.4rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
   margin-bottom: 1.5rem;
 }
 .hero__lede {
@@ -213,7 +212,7 @@ main { position: relative; z-index: 1; }
 }
 .hero__thesis {
   max-width: 34ch;
-  font-style: italic; font-weight: 300;
+  font-style: italic; font-weight: 400;
   font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
   color: var(--ink);
   border-left: 2px solid var(--amber);
@@ -282,9 +281,8 @@ main { position: relative; z-index: 1; }
 main > .section:first-child { border-top: 0; }
 .section__head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section__title {
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 300; letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 400; letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
 .section__sub { max-width: 60ch; font-size: 1.05rem; }
@@ -302,16 +300,23 @@ main > .section:first-child { border-top: 0; }
   .piece--flip .piece__body { order: 1; }
 }
 
+/* A piece with no still of its own: one column, set off by a rule. */
+.piece--text {
+  margin-bottom: clamp(3rem, 8vw, 6rem);
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 1px solid var(--line-soft);
+}
+
 .piece__meta { margin-bottom: 0.6rem; }
 .piece__title {
-  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 400; letter-spacing: -0.015em;
   margin-bottom: 0.9rem;
 }
 .piece__logline {
   max-width: var(--measure);
   font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
-  line-height: 1.35; font-weight: 300;
+  line-height: 1.35; font-weight: 400;
   margin-bottom: 1rem;
 }
 .piece__body > p:not([class]) { max-width: var(--measure); color: var(--ink-2); }
@@ -328,7 +333,7 @@ main > .section:first-child { border-top: 0; }
 
 .piece__urdu {
   font-family: var(--urdu);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
   line-height: 1.6;
   color: var(--ink-2);
   margin: 0.4rem 0 0;
@@ -344,7 +349,7 @@ main > .section:first-child { border-top: 0; }
   content: ""; position: absolute; left: 0; top: 0.7em;
   width: 0.8rem; height: 1px; background: var(--amber);
 }
-.laurels strong { color: var(--ink); font-weight: 500; }
+.laurels strong { color: var(--ink); font-weight: 700; }
 
 .list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; color: var(--ink-2); font-size: 0.95em; }
 .list li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 0.6rem; height: 1px; background: var(--line); }
@@ -417,7 +422,7 @@ body.has-lightbox { overflow: hidden; }
 }
 @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
 .card { display: grid; gap: 1.25rem; align-content: start; }
-.card__title { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 400; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
+.card__title { font-size: clamp(1.25rem, 1.9vw, 1.5rem); font-weight: 400; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
 .card__body > p:not([class]) { max-width: var(--measure); color: var(--ink-2); font-size: 0.97em; }
 .card__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 
@@ -477,9 +482,8 @@ body.has-lightbox { overflow: hidden; }
   text-align: center;
 }
 .statement p {
-  font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
-  line-height: 1.3; font-weight: 300; font-style: italic;
-  font-variation-settings: "opsz" 72, "SOFT" 40;
+  font-size: clamp(1.15rem, 1rem + 0.8vw, 1.6rem);
+  line-height: 1.3; font-weight: 400; font-style: italic;
   margin-bottom: 1rem;
 }
 .statement cite { font-size: 0.95rem; color: var(--ink-3); }
@@ -497,7 +501,7 @@ body.has-lightbox { overflow: hidden; }
 .philosophy__lede {
   max-width: 48ch;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   font-style: italic;
   color: var(--ink);
 }
@@ -532,12 +536,12 @@ body.has-lightbox { overflow: hidden; }
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 @media (min-width: 760px) { .courses { grid-template-columns: 1fr 1fr; } }
-.course__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.3rem; }
+.course__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.3rem; }
 .course > .piece__meta { margin-bottom: 0.75rem; }
 .course > p:not([class]) { color: var(--ink-2); max-width: 50ch; }
 
 .students { padding-top: 2rem; border-top: 1px solid var(--line-soft); }
-.students__title, .philosophy__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.5rem; }
+.students__title, .philosophy__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 .students__intro { color: var(--ink-2); max-width: 60ch; }
 .students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
 .students__list:empty { display: none; }
@@ -565,8 +569,8 @@ body.has-lightbox { overflow: hidden; }
 
 .contact__grid { display: grid; gap: 1.5rem; }
 .contact__mail {
-  font-size: clamp(1.4rem, 1rem + 2.4vw, 3rem);
-  font-weight: 300; letter-spacing: -0.01em;
+  font-size: clamp(1.2rem, 0.9rem + 1.8vw, 2.2rem);
+  font-weight: 400; letter-spacing: -0.01em;
   overflow-wrap: anywhere;
   border-bottom: 1px solid var(--line);
   padding-bottom: 0.3rem;
@@ -632,7 +636,7 @@ body.has-lightbox { overflow: hidden; }
 }
 .credits.is-on .credits__roll { animation: roll 40s linear forwards; }
 @keyframes roll { to { transform: translateY(-110%); } }
-.credits__h { font-size: 1.6em; margin-bottom: 1.5rem; font-weight: 300; }
+.credits__h { font-size: 1.6em; margin-bottom: 1.5rem; font-weight: 400; }
 .credits__role { color: #8d9287; margin: 1.6rem 0 0.2rem; }
 .credits__end { margin-top: 3rem; font-style: italic; color: #b8bcb0; }
 
