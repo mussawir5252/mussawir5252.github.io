@@ -145,7 +145,9 @@
   function youtube() {
     var boxes = document.querySelectorAll('.yt[data-yt]');
     Array.prototype.forEach.call(boxes, function (box) {
-      var btn = box.querySelector('.yt__play');
+      // The play control is a sibling of the still now, not laid over it.
+      var scope = box.parentNode || document;
+      var btn = scope.querySelector('.yt__play');
       function play() {
         var id = box.getAttribute('data-yt');
         var iframe = document.createElement('iframe');
@@ -156,12 +158,13 @@
         box.innerHTML = '';
         box.appendChild(iframe);
         box.classList.add('is-playing');
+        box.style.cursor = 'default';
+        if (btn) btn.hidden = true;
         track('film_played', { film: iframe.title });
       }
       if (btn) btn.addEventListener('click', play);
-      box.addEventListener('click', function (e) {
-        if (e.target === btn || btn.contains(e.target)) return;
-        play();
+      box.addEventListener('click', function () {
+        if (!box.classList.contains('is-playing')) play();
       });
     });
   }

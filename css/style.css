@@ -247,7 +247,9 @@ main { position: relative; z-index: 1; }
 .frame img { width: 100%; height: 100%; object-fit: cover; }
 .frame--4x3 { aspect-ratio: 4 / 3; }
 .frame--16x9 { aspect-ratio: 16 / 9; }
-.frame--scope { aspect-ratio: 2.39 / 1; }
+/* A narrower image inside a 16:9 frame, with bars, so every still matches. */
+.frame--pillar { background: #151713; }
+.frame--pillar img { object-fit: contain; }
 .frame--3x4 { aspect-ratio: 3 / 4; }
 .frame--book { aspect-ratio: 2 / 3; max-width: 18rem; }
 
@@ -297,6 +299,9 @@ main > .section:first-child { border-top: 0; }
 @media (min-width: 900px) {
   .piece--feature { grid-template-columns: 1.15fr 1fr; }
   .piece--feature .piece__media { position: sticky; top: 5rem; }
+  /* Flipping swaps the columns, so swap their widths too and keep every
+     still the same size down the page. */
+  .piece--feature.piece--flip { grid-template-columns: 1fr 1.15fr; }
   .piece--flip .piece__media { order: 2; }
   .piece--flip .piece__body { order: 1; }
 }
@@ -423,15 +428,11 @@ body.has-lightbox { overflow: hidden; }
 /* YouTube facade */
 .yt { cursor: pointer; }
 .yt__play {
-  position: absolute; inset: 0;
-  display: flex; align-items: flex-end; justify-content: flex-start;
-  padding: 0.9rem;
-  background: linear-gradient(180deg, transparent 55%, rgba(20, 21, 18, 0.6));
-  color: #fff;
-  gap: 0.6rem;
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  margin-top: 0.8rem;
 }
 .yt__play-icon {
-  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
   background: var(--amber);
   position: relative; flex: 0 0 auto;
 }
@@ -439,8 +440,11 @@ body.has-lightbox { overflow: hidden; }
   content: ""; position: absolute; left: 55%; top: 50%; transform: translate(-50%, -50%);
   border-left: 0.8rem solid #fff8ee; border-top: 0.5rem solid transparent; border-bottom: 0.5rem solid transparent;
 }
-.yt__play-text { color: #fff; align-self: center; font-size: 0.95rem; }
-.yt:hover .yt__play-text, .yt__play:focus-visible .yt__play-text { text-decoration: underline; text-underline-offset: 0.2em; }
+.yt__play-text { color: var(--ink-2); font-size: 0.95rem; transition: color var(--quick); }
+.yt__play:hover .yt__play-text, .yt__play:focus-visible .yt__play-text,
+.yt:hover + .yt__play .yt__play-text { color: var(--amber-text); text-decoration: underline; text-underline-offset: 0.2em; }
+/* display on the button beats the UA rule for [hidden], so say it again. */
+.yt__play[hidden] { display: none; }
 .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* A status screen, for the VR piece. The one place the type is institutional. */
