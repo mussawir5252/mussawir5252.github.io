@@ -24,7 +24,7 @@
   --sky-bottom: #e8a35a;
   --hills: #2f342c;
 
-  --serif: "Libre Baskerville", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Satoshi", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
 
@@ -83,11 +83,11 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-weight: 400;
-  font-size: clamp(0.975rem, 0.9rem + 0.3vw, 1.075rem);
-  line-height: 1.6;
-  font-feature-settings: "kern", "liga", "onum";
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.1rem);
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -103,7 +103,7 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
 }
 
-h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
+h1, h2, h3 { margin: 0; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; }
 p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 em { font-style: italic; }
@@ -152,7 +152,7 @@ main { position: relative; z-index: 1; }
   max-width: 76rem; margin: 0 auto; padding: 0.7rem var(--gutter);
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem;
 }
-.top__name { font-weight: 700; color: var(--ink); padding: 0.4rem 0; }
+.top__name { font-weight: 600; color: var(--ink); padding: 0.4rem 0; }
 .top__links { display: flex; flex-wrap: wrap; gap: 0 clamp(0.9rem, 3vw, 2rem); }
 .top__links a {
   display: inline-block; position: relative; padding: 0.4rem 0; color: var(--ink-2);
@@ -198,9 +198,9 @@ main { position: relative; z-index: 1; }
 
 .hero__title {
   font-size: clamp(2.6rem, 8vw, 5.4rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
   margin-bottom: 1.5rem;
 }
 .hero__lede {
@@ -282,7 +282,7 @@ main > .section:first-child { border-top: 0; }
 .section__head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .section__title {
   font-size: clamp(1.9rem, 4vw, 2.9rem);
-  font-weight: 400; letter-spacing: -0.02em;
+  font-weight: 500; letter-spacing: -0.015em;
   margin-bottom: 0.5rem;
 }
 .section__sub { max-width: 60ch; font-size: 1.05rem; }
@@ -310,7 +310,7 @@ main > .section:first-child { border-top: 0; }
 .piece__meta { margin-bottom: 0.6rem; }
 .piece__title {
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-  font-weight: 400; letter-spacing: -0.015em;
+  font-weight: 500; letter-spacing: -0.015em;
   margin-bottom: 0.9rem;
 }
 .piece__logline {
@@ -422,7 +422,7 @@ body.has-lightbox { overflow: hidden; }
 }
 @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
 .card { display: grid; gap: 1.25rem; align-content: start; }
-.card__title { font-size: clamp(1.25rem, 1.9vw, 1.5rem); font-weight: 400; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
+.card__title { font-size: clamp(1.25rem, 1.9vw, 1.5rem); font-weight: 500; letter-spacing: -0.015em; margin-bottom: 0.9rem; }
 .card__body > p:not([class]) { max-width: var(--measure); color: var(--ink-2); font-size: 0.97em; }
 .card__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 
@@ -636,7 +636,7 @@ body.has-lightbox { overflow: hidden; }
 }
 .credits.is-on .credits__roll { animation: roll 40s linear forwards; }
 @keyframes roll { to { transform: translateY(-110%); } }
-.credits__h { font-size: 1.6em; margin-bottom: 1.5rem; font-weight: 400; }
+.credits__h { font-size: 1.6em; margin-bottom: 1.5rem; font-weight: 500; }
 .credits__role { color: #8d9287; margin: 1.6rem 0 0.2rem; }
 .credits__end { margin-top: 3rem; font-style: italic; color: #b8bcb0; }
 
