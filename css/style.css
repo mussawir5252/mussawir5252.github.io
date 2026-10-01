@@ -488,6 +488,21 @@ body.has-lightbox { overflow: hidden; }
    Teaching
    -------------------------------------------------------------------------- */
 
+/* The teaching philosophy, above the course list. */
+.philosophy {
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line-soft);
+}
+.philosophy__lede {
+  max-width: 48ch;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  color: var(--ink);
+}
+.philosophy .prose { margin-bottom: 0; }
+
 .courses {
   display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
   grid-template-columns: 1fr;
@@ -499,7 +514,7 @@ body.has-lightbox { overflow: hidden; }
 .course > p:not([class]) { color: var(--ink-2); max-width: 50ch; }
 
 .students { padding-top: 2rem; border-top: 1px solid var(--line-soft); }
-.students__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.5rem; }
+.students__title, .philosophy__title { font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 0.5rem; }
 .students__intro { color: var(--ink-2); max-width: 60ch; }
 .students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
 .students__list:empty { display: none; }
