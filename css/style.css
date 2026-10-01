@@ -537,12 +537,17 @@ body.has-lightbox { overflow: hidden; }
 }
 @media (min-width: 760px) { .courses { grid-template-columns: 1fr 1fr; } }
 .course__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.3rem; }
+.course__when {
+  display: inline-block;
+  font-size: 0.72em; font-weight: 400; font-style: italic;
+  letter-spacing: 0; color: var(--ink-3); white-space: nowrap;
+}
 .course > .piece__meta { margin-bottom: 0.75rem; }
 .course > p:not([class]) { color: var(--ink-2); max-width: 50ch; }
 
 .students { padding-top: 2rem; border-top: 1px solid var(--line-soft); }
 .students__title, .essay__title, .courses__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
-.courses__title { margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+.courses__title { margin-bottom: clamp(2rem, 4vw, 3rem); }
 .students__intro { color: var(--ink-2); max-width: 60ch; }
 .students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
 .students__list:empty { display: none; }
