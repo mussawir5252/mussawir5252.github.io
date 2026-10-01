@@ -492,43 +492,43 @@ body.has-lightbox { overflow: hidden; }
    Teaching
    -------------------------------------------------------------------------- */
 
-/* The teaching philosophy, above the course list. */
-.philosophy {
+/* A folded statement: Teaching philosophy, Artist statement. */
+.essay {
   padding-bottom: clamp(2rem, 4vw, 3rem);
   margin-bottom: clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid var(--line-soft);
 }
-.philosophy__lede {
+.essay__lede {
   max-width: 48ch;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   font-style: italic;
   color: var(--ink);
 }
-.philosophy .prose { margin-bottom: 0; }
+.essay .prose { margin-bottom: 0; }
 
 /* The statement folds away; the opening line above it stays as the teaser. */
-.philosophy__full > summary {
+.essay__full > summary {
   display: inline-flex; align-items: baseline; gap: 0.5rem;
   cursor: pointer; list-style: none;
   color: var(--ink-2); font-size: 0.95rem;
   padding: 0.4rem 0;
   transition: color var(--quick);
 }
-.philosophy__full > summary::-webkit-details-marker { display: none; }
-.philosophy__full > summary::after {
+.essay__full > summary::-webkit-details-marker { display: none; }
+.essay__full > summary::after {
   content: ""; width: 0.45rem; height: 0.45rem;
   border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
   transform: translateY(-0.15em) rotate(45deg);
   transition: transform var(--quick) var(--ease);
 }
-.philosophy__full[open] > summary::after { transform: translateY(0.1em) rotate(-135deg); }
-.philosophy__full > summary:hover,
-.philosophy__full > summary:focus-visible { color: var(--amber-text); }
-.philosophy__toggle-less { display: none; }
-.philosophy__full[open] .philosophy__toggle-more { display: none; }
-.philosophy__full[open] .philosophy__toggle-less { display: inline; }
-.philosophy__full[open] > .prose { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
+.essay__full[open] > summary::after { transform: translateY(0.1em) rotate(-135deg); }
+.essay__full > summary:hover,
+.essay__full > summary:focus-visible { color: var(--amber-text); }
+.essay__toggle-less { display: none; }
+.essay__full[open] .essay__toggle-more { display: none; }
+.essay__full[open] .essay__toggle-less { display: inline; }
+.essay__full[open] > .prose { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
 
 .courses {
   display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
@@ -541,7 +541,7 @@ body.has-lightbox { overflow: hidden; }
 .course > p:not([class]) { color: var(--ink-2); max-width: 50ch; }
 
 .students { padding-top: 2rem; border-top: 1px solid var(--line-soft); }
-.students__title, .philosophy__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
+.students__title, .essay__title { font-size: clamp(1.2rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
 .students__intro { color: var(--ink-2); max-width: 60ch; }
 .students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
 .students__list:empty { display: none; }
