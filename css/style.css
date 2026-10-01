@@ -68,6 +68,10 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+  /* Always keep room for the scrollbar. Short pages do not need one and long
+     pages do, and without this the page width changes between them, which
+     slides the right-aligned nav sideways as you move from page to page. */
+  overflow-y: scroll;
 }
 
 @media (prefers-reduced-motion: reduce) {
