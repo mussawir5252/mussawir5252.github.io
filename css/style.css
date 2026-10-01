@@ -503,6 +503,29 @@ body.has-lightbox { overflow: hidden; }
 }
 .philosophy .prose { margin-bottom: 0; }
 
+/* The statement folds away; the opening line above it stays as the teaser. */
+.philosophy__full > summary {
+  display: inline-flex; align-items: baseline; gap: 0.5rem;
+  cursor: pointer; list-style: none;
+  color: var(--ink-2); font-size: 0.95rem;
+  padding: 0.4rem 0;
+  transition: color var(--quick);
+}
+.philosophy__full > summary::-webkit-details-marker { display: none; }
+.philosophy__full > summary::after {
+  content: ""; width: 0.45rem; height: 0.45rem;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform var(--quick) var(--ease);
+}
+.philosophy__full[open] > summary::after { transform: translateY(0.1em) rotate(-135deg); }
+.philosophy__full > summary:hover,
+.philosophy__full > summary:focus-visible { color: var(--amber-text); }
+.philosophy__toggle-less { display: none; }
+.philosophy__full[open] .philosophy__toggle-more { display: none; }
+.philosophy__full[open] .philosophy__toggle-less { display: inline; }
+.philosophy__full[open] > .prose { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
+
 .courses {
   display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
   grid-template-columns: 1fr;

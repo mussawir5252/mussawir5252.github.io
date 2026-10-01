@@ -270,6 +270,25 @@
   }
 
   /* ------------------------------------------------------------------
+     A folded statement should still print in full.
+     ------------------------------------------------------------------ */
+  function printing() {
+    var folds = document.querySelectorAll('details');
+    if (!folds.length) return;
+    var wasShut = [];
+    window.addEventListener('beforeprint', function () {
+      wasShut = [];
+      Array.prototype.forEach.call(folds, function (d) {
+        if (!d.open) { wasShut.push(d); d.open = true; }
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      wasShut.forEach(function (d) { d.open = false; });
+      wasShut = [];
+    });
+  }
+
+  /* ------------------------------------------------------------------
      For whoever opens the console.
      ------------------------------------------------------------------ */
   function console_() {
@@ -299,6 +318,7 @@
   title();
   youtube();
   lightbox();
+  printing();
   credits();
   lights();
   console_();
