@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- The last shot: the sun going down behind the hills -->
-  <rect width="64" height="64" fill="#e3e5dd"/>
+  <rect width="64" height="64" fill="#fffdfd"/>
   <circle cx="32" cy="38" r="14" fill="#d4802a"/>
-  <rect x="0" y="38" width="64" height="26" fill="#1b1d19"/>
+  <rect x="0" y="38" width="64" height="26" fill="#37334b"/>
 </svg>

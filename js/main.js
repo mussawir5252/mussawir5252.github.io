@@ -300,9 +300,9 @@
     if (!window.console || !console.log) return;
     console.log(
       '%cDon’t you ever feel like getting photographed yourself?',
-      'font-family: Georgia, serif; font-style: italic; font-size: 14px; color: #d4802a;'
+      'font-family: Georgia, serif; font-style: italic; font-size: 14px; color: #37b5ff;'
     );
-    console.log('%cColor of Sunset, 2022. musawir.abrar@uconn.edu', 'font-family: monospace; font-size: 11px; color: #7a7468;');
+    console.log('%cColor of Sunset, 2022. musawir.abrar@uconn.edu', 'font-family: monospace; font-size: 11px; color: #6c687a;');
   }
 
   /* Analytics, only if the snippet loaded. */
