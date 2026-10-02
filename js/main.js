@@ -2,7 +2,37 @@
 (function () {
   'use strict';
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ------------------------------------------------------------------
+     Light and dark. The head sets the stored choice before the first
+     paint; this only handles the button and remembers what was picked.
+     ------------------------------------------------------------------ */
+  function theme() {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    var dark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function current() {
+      return root.getAttribute('data-theme') || (dark.matches ? 'dark' : 'light');
+    }
+    function label() {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+      btn.setAttribute('title', 'Switch to ' + next + ' mode');
+    }
+    label();
+
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
+      track('theme_switched', { to: next });
+    });
+
+    // Follow the system while no choice has been made.
+    if (dark.addEventListener) dark.addEventListener('change', label);
+  }
 
   /* ------------------------------------------------------------------
      Two clocks. Storrs and Lahore. Never the same time twice.
@@ -19,16 +49,6 @@
     }
     tick();
     setInterval(tick, 15000);
-  }
-
-  /* ------------------------------------------------------------------
-     Tab title. When you look away, the title becomes the film's.
-     ------------------------------------------------------------------ */
-  function title() {
-    var home = document.title;
-    document.addEventListener('visibilitychange', function () {
-      document.title = document.hidden ? 'منظر' : home;
-    });
   }
 
   /* ------------------------------------------------------------------
@@ -120,53 +140,6 @@
   }
 
   /* ------------------------------------------------------------------
-     If you sit at the bottom long enough, the credits roll.
-     Any movement ends them. Once per visit.
-     ------------------------------------------------------------------ */
-  function credits() {
-    var el = document.getElementById('credits');
-    if (!el || reduceMotion) return;
-    var timer = null, shown = false;
-    function atBottom() {
-      return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-    }
-    function arm() {
-      if (shown) return;
-      clearTimeout(timer);
-      if (atBottom()) timer = setTimeout(show, 25000);
-    }
-    function show() {
-      if (shown) return;
-      shown = true;
-      track('credits_rolled', {});
-      el.classList.add('is-on');
-      el.setAttribute('aria-hidden', 'false');
-      ['scroll', 'keydown', 'pointerdown', 'touchstart', 'wheel'].forEach(function (ev) {
-        window.addEventListener(ev, hide, { once: true, passive: true });
-      });
-      setTimeout(hide, 42000);
-    }
-    function hide() {
-      el.classList.remove('is-on');
-      el.setAttribute('aria-hidden', 'true');
-    }
-    window.addEventListener('scroll', arm, { passive: true });
-    arm();
-  }
-
-  /* ------------------------------------------------------------------
-     At 17 minutes 49 seconds on the page, the length of Color of Sunset,
-     the lights flicker once.
-     ------------------------------------------------------------------ */
-  function lights() {
-    if (reduceMotion) return;
-    setTimeout(function () {
-      document.body.classList.add('is-flicker');
-      setTimeout(function () { document.body.classList.remove('is-flicker'); }, 800);
-    }, (17 * 60 + 49) * 1000);
-  }
-
-  /* ------------------------------------------------------------------
      A folded statement should still print in full.
      ------------------------------------------------------------------ */
   function printing() {
@@ -208,13 +181,11 @@
   }
 
   /* ------------------------------------------------------------------ */
+  theme();
   clocks();
-  title();
   players();
   lightbox();
   printing();
-  credits();
-  lights();
   console_();
   setText('year', String(new Date().getFullYear()));
 })();

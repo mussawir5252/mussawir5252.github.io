@@ -36,8 +36,12 @@
   color-scheme: light dark;
 }
 
+/* Dark values live in two places: under the media query for anyone who has
+   not chosen, and under [data-theme="dark"] for anyone who has. The
+   :not() keeps a chosen light theme from being overridden by the system. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --paper: #1a1826;
     --paper-2: #221f2e;
     --paper-3: #2c2839;
@@ -51,6 +55,22 @@
     --accent-text: #6bcdff;
   }
 }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+    --paper: #1a1826;
+    --paper-2: #221f2e;
+    --paper-3: #2c2839;
+    --line: #413c52;
+    --line-soft: #2e2a3c;
+    --ink: #ece9f2;
+    --ink-2: #b9b4c6;
+    --ink-3: #8e89a0;
+    --accent: #5cc6ff;
+    --accent-2: #8bd8ff;
+    --accent-text: #6bcdff;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 /* --------------------------------------------------------------------------
    Base
@@ -149,7 +169,18 @@ main { position: relative; z-index: 1; }
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem;
 }
 .top__name { font-weight: 600; color: var(--ink); padding: 0.4rem 0; }
+.top__right { display: flex; align-items: center; gap: clamp(0.9rem, 3vw, 1.75rem); }
 .top__links { display: flex; flex-wrap: wrap; gap: 0 clamp(0.9rem, 3vw, 2rem); }
+
+/* Light and dark. A half-filled disc, not a sun. */
+.theme {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; flex: 0 0 auto;
+  color: var(--ink-2); border-radius: 50%;
+  transition: color var(--quick), background var(--quick);
+}
+.theme:hover, .theme:focus-visible { color: var(--accent-text); background: var(--paper-2); }
+.theme svg { width: 1rem; height: 1rem; display: block; }
 .top__links a {
   display: inline-block; position: relative; padding: 0.4rem 0; color: var(--ink-2);
   font-size: 0.95rem;
@@ -165,7 +196,10 @@ main { position: relative; z-index: 1; }
 .top__links a:hover::after, .top__links a:focus-visible::after,
 .top__links a[aria-current]::after { transform: scaleX(1); }
 @media (max-width: 600px) {
-  .top__links { width: 100%; justify-content: flex-start; gap: 0 1rem; }
+  /* The links wrap to two rows here; keep the toggle level with the first. */
+  .top__right { width: 100%; justify-content: space-between; align-items: flex-start; }
+  .theme { margin-top: -0.15rem; }
+  .top__links { justify-content: flex-start; gap: 0 1rem; }
   .top__links a { padding: 0.6rem 0; min-height: 44px; }
 }
 
@@ -283,6 +317,20 @@ main > .section:first-child { border-top: 0; }
   margin-bottom: 0.5rem;
 }
 .section__sub { max-width: 60ch; font-size: 1.05rem; }
+/* The frame motif: a short rule under each section head, as the resume has,
+   and the native ratio marked under each still. */
+.section__head::after {
+  content: ""; display: block;
+  width: 3.5rem; height: 2px;
+  background: var(--accent);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+.frame__ratio {
+  font-family: var(--mono);
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0.55rem 0 0;
+}
 
 /* --------------------------------------------------------------------------
    Pieces of work

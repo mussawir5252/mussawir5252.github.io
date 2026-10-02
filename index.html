@@ -27,6 +27,17 @@
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
+  <script>
+    /* Set the chosen theme before the first paint, so the page never flashes
+       the wrong one. The rest of the toggle lives in main.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,14 +91,22 @@
   <header class="top" id="top">
     <nav class="top__nav" aria-label="Primary">
       <a class="top__name" href="index.html">Musawir Abrar</a>
-      <ul class="top__links">
+      <div class="top__right">
+        <ul class="top__links">
         <li><a href="index.html" aria-current="page">About</a></li>
         <li><a href="films.html">Films</a></li>
         <li><a href="teaching.html">Teaching</a></li>
         <li><a href="work.html">Work</a></li>
         <li><a href="record.html">Record</a></li>
         <li><a href="contact.html">Contact</a></li>
-      </ul>
+        </ul>
+        <button class="theme" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M8 1.8 A6.2 6.2 0 0 1 8 14.2 Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -183,27 +202,8 @@
       <p class="foot__place"><span class="foot__city">Storrs</span> <time id="time-storrs" class="foot__time">--:--</time></p>
       <p class="foot__place"><span class="foot__city">Lahore</span> <time id="time-lahore" class="foot__time">--:--</time></p>
       <p class="foot__copy">&copy; <span id="year">2026</span> Musawir Abrar. All films and words mine.</p>
-      <p class="foot__dark">I can comfortably sleep with the lights on.</p>
     </div>
   </footer>
-
-  <!-- Credits, shown only if you wait at the bottom -->
-  <aside class="credits" id="credits" aria-hidden="true">
-    <div class="credits__roll">
-      <p class="credits__h">Color of Sunset</p>
-      <p class="credits__role">Written, directed, and edited by</p>
-      <p>Mussawir Abrar</p>
-      <p class="credits__role">Producers</p>
-      <p>Mussawir Abrar, Mehroz Amin, Usama Javed, Hamza Akram</p>
-      <p class="credits__role">Assistant directors</p>
-      <p>Daniel Anjum, Malaika Joseph</p>
-      <p class="credits__role">Art directors</p>
-      <p>Mansoor Ali, Shkaina Joseph</p>
-      <p class="credits__role">With thanks</p>
-      <p>Chal Phir Cinema, Wajiha Raza Rizvi, Sobia Zaidi, Ali Arshad, Ahsan Minhas, M Ameer, Shahzad Khokhar, Jawwad, Umair Ghani</p>
-      <p class="credits__end">Thank you for waiting.</p>
-    </div>
-  </aside>
 
   <script src="js/main.js" defer></script>
 </body>
