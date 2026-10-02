@@ -20,9 +20,6 @@
   --accent-2: #6bc7fe;
   --accent-text: #0b6ea6;
 
-  --sky-top: #cfd3e2;
-  --sky-bottom: #e8a35a;
-  --hills: #37334b;
 
   --sans: "Satoshi", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
@@ -52,9 +49,6 @@
     --accent: #5cc6ff;
     --accent-2: #8bd8ff;
     --accent-text: #6bcdff;
-    --sky-top: #1d1b2a;
-    --sky-bottom: #5a3417;
-    --hills: #100e18;
   }
 }
 
@@ -127,7 +121,7 @@ main { position: relative; z-index: 1; }
 
 /* Two quiet type roles. Metadata is italic and dimmer; labels are upright and smaller. */
 .meta, .piece__meta, .piece__status, .piece__aside, .section__sub, .foot__row,
-.frame__cap, .credits__role, .contact__where, .hero__sun {
+.frame__cap, .credits__role, .contact__where {
   font-size: 0.95rem;
   font-style: italic;
   color: var(--ink-3);
@@ -184,8 +178,6 @@ main { position: relative; z-index: 1; }
   padding: clamp(1.5rem, 3vw, 2.5rem) var(--gutter) clamp(3rem, 8vw, 6rem);
 }
 
-.hero__sun { margin-bottom: clamp(2.5rem, 6vw, 5rem); }
-.hero__sun-time { color: var(--accent-text); font-style: normal; font-variant-numeric: tabular-nums; }
 
 .hero__grid {
   display: grid; gap: clamp(2rem, 5vw, 4rem);
@@ -630,14 +622,15 @@ body.has-lightbox { overflow: hidden; }
 .contact__where [lang="ur"], .contact__where [lang="sd"] { font-family: var(--urdu); font-style: normal; font-size: 1.15em; }
 
 /* --------------------------------------------------------------------------
-   Footer with a sky
+   Footer
    -------------------------------------------------------------------------- */
 
-.foot { position: relative; z-index: 1; margin-top: clamp(2rem, 6vw, 4rem); border-top: 1px solid var(--line); }
-.foot__sky { height: clamp(90px, 14vw, 160px); }
-.sky { width: 100%; height: 100%; display: block; }
-.sky__sun { fill: var(--accent-2); }
-.sky__hills { fill: var(--hills); }
+.foot {
+  position: relative; z-index: 1;
+  margin-top: clamp(3rem, 8vw, 6rem);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--line);
+}
 
 .foot__row {
   max-width: 76rem; margin: 0 auto;
@@ -701,7 +694,7 @@ body.is-flicker { animation: flicker 700ms steps(1, end) 1; }
    -------------------------------------------------------------------------- */
 
 @media print {
-  .top, .hero__sun, .hero__cta, .foot__sky, .credits, .yt__play, .pending, .lightbox, .vid { display: none !important; }
+  .top, .hero__cta, .credits, .yt__play, .pending, .lightbox, .vid { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .section { border-top: 1px solid #999; padding: 1.5rem 0; }
   .piece--feature { grid-template-columns: 1fr 1fr; }
