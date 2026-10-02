@@ -229,25 +229,70 @@
       <div class="students" id="student-work">
         <h3 class="students__title">Student work</h3>
         <p class="students__intro">
-          I will collect screenplays from Film Writing and video essays from Auteur Study
-          here, with their authors&rsquo; permission.
+          Video essays from Auteur Study, published with their authors&rsquo; permission.
+          The films are password-protected; the player will ask before it plays. Write to me
+          at <a class="link" href="mailto:musawir.abrar@uconn.edu">musawir.abrar@uconn.edu</a>
+          for the password.
         </p>
         <!--
-          Template for a student piece. Copy one <li> per work into the <ul> below.
-          Screenplay:
+          One <li> per piece. A video essay loads its player only when clicked:
+            <li class="student">
+              <div class="frame frame--16x9 vid" data-vimeo="VIMEO_ID" data-title="Video essay by Name">
+                <button class="vid__play" type="button" aria-label="Play the video essay by Name">
+                  <span class="vid__play-icon" aria-hidden="true"></span>
+                  <span class="vid__play-text">Play the essay</span>
+                </button>
+              </div>
+              <p class="student__by">
+                <span class="student__name">Name</span>
+                <span class="student__meta">UConn &rsquo;27. Auteur Study, spring 2026.</span>
+              </p>
+            </li>
+          A screenplay is a plain link instead:
             <li class="student">
               <span class="student__kind">Screenplay</span>
               <a class="student__title" href="assets/students/title.pdf">Title</a>
-              <span class="student__by">Student Name, Film Writing, fall 2025</span>
-            </li>
-          Video essay:
-            <li class="student">
-              <span class="student__kind">Video essay</span>
-              <a class="student__title" href="https://youtu.be/..." rel="noopener">Title</a>
-              <span class="student__by">Student Name, Auteur Study, spring 2026</span>
+              <span class="student__by">Name, Film Writing, fall 2025</span>
             </li>
         -->
-        <ul class="students__list"></ul>
+        <ul class="students__list">
+          <li class="student">
+            <div class="frame frame--16x9 vid" data-vimeo="1229707817" data-title="Video essay by Kamden Meyer">
+              <button class="vid__play" type="button" aria-label="Play the video essay by Kamden Meyer">
+                <span class="vid__play-icon" aria-hidden="true"></span>
+                <span class="vid__play-text">Play the essay</span>
+              </button>
+            </div>
+            <p class="student__by">
+              <span class="student__name">Kamden Meyer</span>
+              <span class="student__meta">UConn &rsquo;27. Auteur Study, spring 2026.</span>
+            </p>
+          </li>
+          <li class="student">
+            <div class="frame frame--16x9 vid" data-vimeo="1229706820" data-title="Video essay by Brian Kim">
+              <button class="vid__play" type="button" aria-label="Play the video essay by Brian Kim">
+                <span class="vid__play-icon" aria-hidden="true"></span>
+                <span class="vid__play-text">Play the essay</span>
+              </button>
+            </div>
+            <p class="student__by">
+              <span class="student__name">Brian Kim</span>
+              <span class="student__meta">UConn &rsquo;27. Auteur Study, spring 2026.</span>
+            </p>
+          </li>
+          <li class="student">
+            <div class="frame frame--16x9 vid" data-vimeo="1229707818" data-title="Video essay by Makayla Reed">
+              <button class="vid__play" type="button" aria-label="Play the video essay by Makayla Reed">
+                <span class="vid__play-icon" aria-hidden="true"></span>
+                <span class="vid__play-text">Play the essay</span>
+              </button>
+            </div>
+            <p class="student__by">
+              <span class="student__name">Makayla Reed</span>
+              <span class="student__meta">UConn &rsquo;27. Auteur Study, spring 2026.</span>
+            </p>
+          </li>
+        </ul>
       </div>
     </section>
 

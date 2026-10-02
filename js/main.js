@@ -140,18 +140,20 @@
   }
 
   /* ------------------------------------------------------------------
-     Load YouTube only when asked.
+     Load a player only when asked. YouTube for the films, Vimeo for the essays.
      ------------------------------------------------------------------ */
-  function youtube() {
-    var boxes = document.querySelectorAll('.yt[data-yt]');
+  function players() {
+    var boxes = document.querySelectorAll('[data-yt], [data-vimeo]');
     Array.prototype.forEach.call(boxes, function (box) {
-      // The play control is a sibling of the still now, not laid over it.
-      var scope = box.parentNode || document;
-      var btn = scope.querySelector('.yt__play');
+      var yt = box.getAttribute('data-yt');
+      var vimeo = box.getAttribute('data-vimeo');
+      // The play control is a sibling for the films, a child for the essays.
+      var btn = (box.parentNode || document).querySelector('.yt__play') || box.querySelector('.vid__play');
       function play() {
-        var id = box.getAttribute('data-yt');
         var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+        iframe.src = yt
+          ? 'https://www.youtube-nocookie.com/embed/' + yt + '?autoplay=1&rel=0&modestbranding=1'
+          : 'https://player.vimeo.com/video/' + vimeo + '?autoplay=1&title=0&byline=0&portrait=0';
         iframe.title = box.getAttribute('data-title') || 'Video';
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
@@ -159,10 +161,10 @@
         box.appendChild(iframe);
         box.classList.add('is-playing');
         box.style.cursor = 'default';
-        if (btn) btn.hidden = true;
+        if (btn && btn.parentNode !== box) btn.hidden = true;
         track('film_played', { film: iframe.title });
       }
-      if (btn) btn.addEventListener('click', play);
+      if (btn) btn.addEventListener('click', function (e) { e.stopPropagation(); play(); });
       box.addEventListener('click', function () {
         if (!box.classList.contains('is-playing')) play();
       });
@@ -319,7 +321,7 @@
   clocks();
   sun();
   title();
-  youtube();
+  players();
   lightbox();
   printing();
   credits();

@@ -551,8 +551,38 @@ body.has-lightbox { overflow: hidden; }
 .students__intro { color: var(--ink-2); max-width: 60ch; }
 .students__list { display: grid; gap: 1rem 2rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
 .students__list:empty { display: none; }
-@media (min-width: 760px) { .students__list { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 700px) { .students__list { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .students__list { grid-template-columns: repeat(3, 1fr); } }
 .student { display: grid; gap: 0.15rem; padding: 1rem 0; border-top: 1px solid var(--line-soft); }
+
+/* A video essay: a dark panel that loads its player only when asked. */
+.vid {
+  background: #151713;
+  display: grid; place-items: center;
+  cursor: pointer;
+  margin-bottom: 0.7rem;
+}
+.vid__play {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: #cfd3c9; padding: 1rem;
+}
+.vid__play-icon {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  background: var(--amber); position: relative;
+}
+.vid__play-icon::after {
+  content: ""; position: absolute; left: 55%; top: 50%; transform: translate(-50%, -50%);
+  border-left: 0.8rem solid #fff8ee; border-top: 0.5rem solid transparent; border-bottom: 0.5rem solid transparent;
+}
+.vid__play-text { font-size: 0.9rem; }
+.vid:hover .vid__play-text, .vid__play:focus-visible .vid__play-text {
+  color: #fff; text-decoration: underline; text-underline-offset: 0.2em;
+}
+.vid iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vid.is-playing { cursor: default; }
+.student__name { color: var(--ink); }
+.student__meta { font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
+.student__by { display: grid; gap: 0.1rem; }
 .student__kind { font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
 .student__title { font-size: 1.15rem; color: var(--ink); border-bottom: 1px solid var(--amber); width: fit-content; }
 .student__title:hover, .student__title:focus-visible { color: var(--amber-text); }
@@ -666,7 +696,7 @@ body.is-flicker { animation: flicker 700ms steps(1, end) 1; }
    -------------------------------------------------------------------------- */
 
 @media print {
-  .top, .hero__sun, .hero__cta, .foot__sky, .credits, .yt__play, .pending, .lightbox { display: none !important; }
+  .top, .hero__sun, .hero__cta, .foot__sky, .credits, .yt__play, .pending, .lightbox, .vid { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .section { border-top: 1px solid #999; padding: 1.5rem 0; }
   .piece--feature { grid-template-columns: 1fr 1fr; }
