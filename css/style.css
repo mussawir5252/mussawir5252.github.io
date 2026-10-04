@@ -173,18 +173,18 @@ main { position: relative; z-index: 1; }
 .top__right { display: flex; align-items: center; gap: clamp(0.9rem, 3vw, 1.75rem); }
 .top__links { display: flex; flex-wrap: wrap; gap: 0 clamp(0.9rem, 3vw, 2rem); }
 
-/* Light and dark. A half-filled disc, not a sun. */
+/* Light and dark. A frame, half lit, to match the favicon and the rules. */
 .theme {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 2.3rem; height: 2.3rem; flex: 0 0 auto;
+  width: 2.75rem; height: 1.85rem; flex: 0 0 auto;
   color: var(--ink); background: var(--paper-2);
-  border: 1px solid var(--line); border-radius: 50%;
+  border: 1px solid var(--line); border-radius: var(--radius);
   transition: color var(--quick), background var(--quick), border-color var(--quick);
 }
 .theme:hover, .theme:focus-visible {
   color: var(--accent-text); border-color: var(--accent);
 }
-.theme svg { width: 1.05rem; height: 1.05rem; display: block; }
+.theme svg { width: 1.4rem; height: auto; display: block; }
 .top__links a {
   display: inline-block; position: relative; padding: 0.4rem 0; color: var(--ink-2);
   font-size: 0.95rem;
