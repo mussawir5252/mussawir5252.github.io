@@ -441,18 +441,6 @@ main > .section:first-child { border-top: 0; }
 .strip__item { display: block; width: 100%; padding: 0; cursor: zoom-in; }
 .strip__item img { filter: saturate(0.85); transition: filter var(--quick); }
 .strip__item:hover img, .strip__item:focus-visible img { filter: saturate(1); }
-/* A row of smaller tiles under a card, each opening the same gallery. */
-/* .strip carries a large bottom margin for the Films page; a row of tiles
-   inside a card wants none of it. */
-.strip--mini { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 0; }
-.strip--mini .vid { cursor: zoom-in; }
-.strip--mini .vid__play { gap: 0.35rem; padding: 0.4rem; }
-.strip--mini .vid__play-icon { width: 1.6rem; height: 1.6rem; }
-.strip--mini .vid__play-icon::after {
-  border-left-width: 0.5rem; border-top-width: 0.32rem; border-bottom-width: 0.32rem;
-}
-.strip--mini .vid__play-text { font-size: 0.72rem; }
-
 /* The card's own still, which opens the gallery at its first item. */
 .shot { display: block; position: relative; padding: 0; cursor: zoom-in; background: var(--paper-3); }
 .shot img { width: 100%; height: 100%; object-fit: cover; }

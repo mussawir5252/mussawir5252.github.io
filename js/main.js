@@ -110,9 +110,10 @@
       if (!movie) {
         img.src = el.getAttribute('data-full');
         var inner = el.querySelector('img');
-        img.alt = inner ? inner.alt : '';
+        img.alt = el.getAttribute('data-alt') || (inner ? inner.alt : '');
       } else {
         img.removeAttribute('src');
+        img.alt = '';
       }
       if (label) label.textContent = el.getAttribute('data-caption') || fallback;
       time.textContent = el.getAttribute('data-time') || '';
