@@ -15,12 +15,14 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
 - The header and footer are copied into every page. There is no build step, so a
   change to the nav or the footer has to be made in all six of them. The nav marks
   the current page with `aria-current="page"`.
-- `css/style.css` and `js/main.js` are linked with a `?v=` stamp, which is the
-  first eight characters of the file's SHA-256. Browsers hold on to these two
-  files for a long time otherwise, and a changed stylesheet or script will not
-  reach anyone who has visited before. Change either file and the stamp in all
-  seven pages has to change with it, or the change is invisible to returning
-  visitors.
+- `css/style.css`, `js/main.js`, the screenplay PDFs and the screenplay
+  thumbnails are linked with a `?v=` stamp, which is the first eight characters
+  of the file's SHA-256. Browsers hold on to a file at a given address for a
+  long time otherwise, so a change that keeps the same filename will not reach
+  anyone who has visited before. Replace any of these files and its stamp has
+  to change with it, in every page that links it, or the change is invisible to
+  returning visitors. This has bitten this site more than once: the page looks
+  right when served fresh and wrong in the browser that has been there before.
 - `css/style.css` holds the design. Colors and type are CSS variables at the top.
 - `js/main.js` holds the small interactions. Each one is a short, named function.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
