@@ -89,37 +89,59 @@
   function lightbox() {
     var dlg = document.getElementById('lightbox');
     var img = document.getElementById('lightbox-img');
+    var vid = document.getElementById('lightbox-video');
     var time = document.getElementById('lightbox-time');
-    var items = Array.prototype.slice.call(document.querySelectorAll('.strip__item[data-full]'));
+    var label = document.getElementById('lightbox-label');
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-full], [data-video]'));
     if (!dlg || !img || !items.length || typeof dlg.showModal !== 'function') return;
+    var fallback = label ? label.textContent : '';
     var index = 0, opener = null, touchX = null;
 
     function show(i) {
       index = (i + items.length) % items.length;
-      var btn = items[index];
-      img.src = btn.getAttribute('data-full');
-      img.alt = btn.querySelector('img').alt;
-      time.textContent = btn.getAttribute('data-time') || '';
-      var next = items[(index + 1) % items.length];
-      new Image().src = next.getAttribute('data-full');
+      var el = items[index];
+      var movie = el.getAttribute('data-video');
+      if (vid) {
+        vid.pause();
+        vid.hidden = !movie;
+        if (movie) { vid.src = movie; } else { vid.removeAttribute('src'); vid.load(); }
+      }
+      img.hidden = !!movie;
+      if (!movie) {
+        img.src = el.getAttribute('data-full');
+        var inner = el.querySelector('img');
+        img.alt = inner ? inner.alt : '';
+      } else {
+        img.removeAttribute('src');
+      }
+      if (label) label.textContent = el.getAttribute('data-caption') || fallback;
+      time.textContent = el.getAttribute('data-time') || '';
+      // warm the next one, if it is a picture
+      var next = items[(index + 1) % items.length].getAttribute('data-full');
+      if (next) new Image().src = next;
+      // Hiding the video drops focus to the body if it held it, and the key
+      // handler below never fires again. Keep focus inside the dialog.
+      if (!dlg.contains(document.activeElement)) dlg.focus();
     }
     function open(i, from) {
       opener = from || null;
       show(i);
       dlg.showModal();
+      dlg.focus();
       document.body.classList.add('has-lightbox');
-      track('still_opened', { time: time.textContent });
+      track('gallery_opened', { item: label ? label.textContent : '' });
     }
     function close() { if (dlg.open) dlg.close(); }
 
-    items.forEach(function (btn, i) {
-      btn.addEventListener('click', function () { open(i, btn); });
+    items.forEach(function (el, i) {
+      el.addEventListener('click', function () { open(i, el); });
     });
     dlg.addEventListener('click', function (e) {
       var t = e.target;
       if (t.closest('[data-close]')) return close();
       var nav = t.closest('[data-dir]');
       if (nav) return show(index + Number(nav.getAttribute('data-dir')));
+      // clicks on the video itself are the controls, not a request to leave
       if (!t.closest('.lightbox__stage, .lightbox__cap')) close();
     });
     dlg.addEventListener('keydown', function (e) {
@@ -134,6 +156,7 @@
     }, { passive: true });
     dlg.addEventListener('close', function () {
       document.body.classList.remove('has-lightbox');
+      if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
       img.removeAttribute('src');
       if (opener) opener.focus();
     });
