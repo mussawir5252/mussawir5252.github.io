@@ -248,11 +248,13 @@
       <div class="students" id="student-work">
         <h3 class="students__title">Student work</h3>
         <p class="students__intro">
-          Video essays from Auteur Study, published with their authors&rsquo; permission.
-          The films are password-protected; the player will ask before it plays. Write to me
-          at <a class="link" href="mailto:musawir.abrar@uconn.edu">musawir.abrar@uconn.edu</a>
+          Video essays from Auteur Study and screenplays from Film Writing, published with their
+          authors&rsquo; permission. Both are password-protected and will ask before they open.
+          Write to me at <a class="link" href="mailto:musawir.abrar@uconn.edu">musawir.abrar@uconn.edu</a>
           for the password.
         </p>
+
+        <h4 class="students__group">Video essays</h4>
         <!--
           One <li> per piece. A video essay loads its player only when clicked:
             <li class="student">
@@ -267,11 +269,17 @@
                 <span class="student__meta">Name. UConn &rsquo;27. Auteur Study, spring 2026.</span>
               </p>
             </li>
-          A screenplay is a plain link instead:
+          A screenplay points at its encrypted PDF; the viewer asks for the password:
             <li class="student">
-              <span class="student__kind">Screenplay</span>
-              <a class="student__title" href="assets/students/title.pdf">Title</a>
-              <span class="student__by">Name, Film Writing, fall 2025</span>
+              <button class="frame frame--16x9 script" type="button"
+                      data-pdf="assets/students/slug.pdf" data-title="Title, a screenplay by Name">
+                <img src="assets/img/script-slug-800.jpg" width="800" height="450" loading="lazy" alt="">
+                <span class="script__open">Read the screenplay</span>
+              </button>
+              <p class="student__by">
+                <span class="student__work">Title</span>
+                <span class="student__meta">Name. Film Writing, fall 2025. 00 pages.</span>
+              </p>
             </li>
         -->
         <ul class="students__list">
@@ -312,10 +320,59 @@
             </p>
           </li>
         </ul>
+
+        <h4 class="students__group">Screenplays</h4>
+        <ul class="students__list">
+          <li class="student">
+            <button class="frame frame--16x9 script" type="button"
+                    data-pdf="assets/students/family-meal.pdf"
+                    data-title="Family Meal, a screenplay by Jackson Nanfria">
+              <img src="assets/img/script-family-meal-800.jpg" width="800" height="450" loading="lazy" alt="">
+              <span class="script__open">Read the screenplay</span>
+            </button>
+            <p class="student__by">
+              <span class="student__work">Family Meal</span>
+              <span class="student__meta">Jackson Nanfria. Film Writing, fall 2025. 18 pages.</span>
+            </p>
+          </li>
+          <li class="student">
+            <button class="frame frame--16x9 script" type="button"
+                    data-pdf="assets/students/i-burn-for-you.pdf"
+                    data-title="I Burn For You, a screenplay by Mia Noelle Lupo">
+              <img src="assets/img/script-i-burn-for-you-800.jpg" width="800" height="450" loading="lazy" alt="">
+              <span class="script__open">Read the screenplay</span>
+            </button>
+            <p class="student__by">
+              <span class="student__work">I Burn For You</span>
+              <span class="student__meta">Mia Noelle Lupo. Film Writing, fall 2025. 16 pages.</span>
+            </p>
+          </li>
+          <li class="student">
+            <button class="frame frame--16x9 script" type="button"
+                    data-pdf="assets/students/taking-accountability.pdf"
+                    data-title="Taking Accountability, a screenplay by Madeline Leo">
+              <img src="assets/img/script-taking-accountability-800.jpg" width="800" height="450" loading="lazy" alt="">
+              <span class="script__open">Read the screenplay</span>
+            </button>
+            <p class="student__by">
+              <span class="student__work">Taking Accountability</span>
+              <span class="student__meta">Madeline Leo. Film Writing, fall 2025. 18 pages.</span>
+            </p>
+          </li>
+        </ul>
       </div>
     </section>
 
   </main>
+
+  <dialog class="reader" id="reader" aria-label="Screenplay">
+    <div class="reader__bar">
+      <p class="reader__title" id="reader-title"></p>
+      <a class="reader__link" id="reader-link" href="#" target="_blank" rel="noopener">Open in a new tab</a>
+      <button class="reader__close" type="button" data-close aria-label="Close the screenplay">&times;</button>
+    </div>
+    <iframe class="reader__frame" id="reader-frame" title="Screenplay"></iframe>
+  </dialog>
 
   <footer class="foot">
     <div class="foot__row">

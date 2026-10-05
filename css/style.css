@@ -639,6 +639,48 @@ body.has-lightbox { overflow: hidden; }
 .student__title:hover, .student__title:focus-visible { color: var(--accent-text); }
 .student__by { display: grid; gap: 0.15rem; font-size: 0.95rem; color: var(--ink-2); }
 .student__work { font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.students__group {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  font-size: 0.78rem; font-family: var(--mono);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 400; color: var(--ink-3);
+}
+.students__group + .students__list { margin-top: 1rem; }
+
+/* A screenplay: its title page, over the PDF the reader opens. */
+.script {
+  display: block; position: relative;
+  background: #fff; cursor: pointer;
+  border: 1px solid var(--line);
+}
+.script img { width: 100%; height: 100%; object-fit: cover; }
+.script__open {
+  position: absolute; inset: auto 0 0 0;
+  padding: 0.55rem 0.75rem;
+  background: rgba(22, 20, 31, 0.86); color: #eceaf3;
+  font-size: 0.85rem; text-align: left;
+  transition: background var(--quick);
+}
+.script:hover .script__open, .script:focus-visible .script__open { background: var(--accent-text); }
+
+/* The reader. The browser's own PDF viewer does the asking. */
+.reader {
+  width: min(94vw, 60rem); height: min(92vh, 56rem);
+  padding: 0; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--paper); color: var(--ink);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.6);
+}
+.reader::backdrop { background: rgba(13, 12, 20, 0.82); }
+.reader__bar {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.6rem 0.75rem 0.6rem 1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.reader__title { margin: 0; flex: 1 1 auto; font-size: 0.95rem; }
+.reader__link { font-size: 0.9rem; color: var(--accent-text); border-bottom: 1px solid var(--accent); }
+.reader__close { font-size: 1.5rem; line-height: 1; padding: 0 0.4rem; color: var(--ink-2); }
+.reader__close:hover, .reader__close:focus-visible { color: var(--accent-text); }
+.reader__frame { display: block; width: 100%; height: calc(100% - 3rem); border: 0; background: var(--paper-2); }
 
 /* --------------------------------------------------------------------------
    Record
@@ -749,7 +791,7 @@ body.is-flicker { animation: flicker 700ms steps(1, end) 1; }
    -------------------------------------------------------------------------- */
 
 @media print {
-  .top, .hero__cta, .credits, .yt__play, .lightbox, .vid { display: none !important; }
+  .top, .hero__cta, .credits, .yt__play, .lightbox, .vid, .reader { display: none !important; }
   body { background: #fff; color: #000; font-size: 11pt; }
   .section { border-top: 1px solid #999; padding: 1.5rem 0; }
   .piece--feature { grid-template-columns: 1fr 1fr; }

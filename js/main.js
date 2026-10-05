@@ -140,6 +140,50 @@
   }
 
   /* ------------------------------------------------------------------
+     Screenplays. The PDFs are encrypted, so the browser's own viewer
+     does the asking; this only opens one over the page.
+     ------------------------------------------------------------------ */
+  function reader() {
+    var dlg = document.getElementById('reader');
+    var frame = document.getElementById('reader-frame');
+    var name = document.getElementById('reader-title');
+    var link = document.getElementById('reader-link');
+    var items = document.querySelectorAll('[data-pdf]');
+    if (!dlg || !frame || !items.length) return;
+    var narrow = window.matchMedia('(max-width: 760px)');
+
+    function shut() { if (dlg.open) dlg.close(); }
+
+    Array.prototype.forEach.call(items, function (btn) {
+      btn.addEventListener('click', function () {
+        var src = btn.getAttribute('data-pdf');
+        var title = btn.getAttribute('data-title') || 'Screenplay';
+        // Phones embed PDFs badly, often showing page one and no way down.
+        // Hand the file to the browser instead.
+        if (narrow.matches || typeof dlg.showModal !== 'function') {
+          window.open(src, '_blank', 'noopener');
+          return;
+        }
+        name.textContent = title;
+        link.href = src;
+        frame.src = src;
+        frame.title = title;
+        dlg.showModal();
+        document.body.classList.add('has-lightbox');
+        track('screenplay_opened', { work: title });
+      });
+    });
+
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg || e.target.closest('[data-close]')) shut();
+    });
+    dlg.addEventListener('close', function () {
+      frame.removeAttribute('src');
+      document.body.classList.remove('has-lightbox');
+    });
+  }
+
+  /* ------------------------------------------------------------------
      A folded statement should still print in full.
      ------------------------------------------------------------------ */
   function printing() {
@@ -185,6 +229,7 @@
   clocks();
   players();
   lightbox();
+  reader();
   printing();
   console_();
   setText('year', String(new Date().getFullYear()));
