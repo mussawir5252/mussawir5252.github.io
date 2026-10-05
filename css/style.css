@@ -279,6 +279,8 @@ main { position: relative; z-index: 1; }
 .frame img { width: 100%; height: 100%; object-fit: cover; }
 .frame--4x3 { aspect-ratio: 4 / 3; }
 .frame--16x9 { aspect-ratio: 16 / 9; }
+/* A screenplay page, shown at the shape of the paper. */
+.frame--page { aspect-ratio: 8.5 / 11; }
 /* A narrower image inside a 16:9 frame, with bars, so every still matches. */
 .frame--pillar { background: #16141f; }
 .frame--pillar img { object-fit: contain; }
