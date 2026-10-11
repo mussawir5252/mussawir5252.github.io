@@ -699,6 +699,38 @@ body.has-lightbox { overflow: hidden; }
 .reader__frame { display: block; width: 100%; height: calc(100% - 3rem); border: 0; background: var(--paper-2); }
 
 /* --------------------------------------------------------------------------
+   A panel of writing, opened over the page it belongs to.
+   -------------------------------------------------------------------------- */
+.panel {
+  width: min(94vw, 46rem); max-height: min(92vh, 56rem);
+  padding: 0; overflow: hidden;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--paper); color: var(--ink);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.6);
+}
+.panel::backdrop { background: rgba(13, 12, 20, 0.82); }
+.panel[open] { animation: lb-in 240ms var(--ease); }
+.panel__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.panel__close { font-size: 1.5rem; line-height: 1; padding: 0 0.4rem; color: var(--ink-2); }
+.panel__close:hover, .panel__close:focus-visible { color: var(--accent-text); }
+.panel__body { overflow-y: auto; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.panel__title { font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.25; }
+.panel__where { margin-top: 0.6rem; font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
+.panel__body .prose { max-width: none; margin: clamp(1.25rem, 3vw, 1.75rem) 0 0; }
+.panel__body .prose p + p { margin-top: 1rem; }
+.panel__ask {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  padding-top: clamp(1rem, 2vw, 1.25rem);
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.97rem; color: var(--ink-2);
+}
+
+/* --------------------------------------------------------------------------
    Record
    -------------------------------------------------------------------------- */
 
@@ -709,24 +741,6 @@ body.has-lightbox { overflow: hidden; }
 .record__when { color: var(--accent-text); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 .record__what { color: var(--ink-2); font-size: 0.95em; }
 
-/* ----------------------------------------------------------------------------
-   The conference paper. The citation sits in the left column, the abstract in
-   the right, so the text holds a reading measure instead of the page width.
-   ---------------------------------------------------------------------------- */
-.paper__grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
-@media (min-width: 900px) {
-  .paper__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); }
-  .paper__head { position: sticky; top: 6rem; align-self: start; }
-}
-.paper__title {
-  margin-top: 0.4rem;
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-  line-height: 1.25;
-  max-width: 24ch;
-}
-.paper__where { margin-top: 0.75rem; font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
-.paper__body { max-width: none; margin-bottom: 0; }
-.paper__body p + p { margin-top: 1rem; }
 
 /* --------------------------------------------------------------------------
    Contact

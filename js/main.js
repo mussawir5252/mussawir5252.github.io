@@ -216,6 +216,9 @@
       if (!id) return;
       var target = document.getElementById(id);
       if (!target) return;
+      // A card whose writing lives in a panel opens the panel.
+      var opener = target.querySelector('[data-panel]');
+      if (opener) return opener.click();
       var fold = target.matches('details') ? target : target.querySelector('details');
       if (!fold) fold = target.closest('details');
       if (fold && !fold.open) {
@@ -225,6 +228,35 @@
     }
     reveal();
     window.addEventListener('hashchange', reveal);
+  }
+
+  /* ------------------------------------------------------------------
+     Writing that opens over the page rather than beside it.
+     ------------------------------------------------------------------ */
+  function panels() {
+    var openers = document.querySelectorAll('[data-panel]');
+    if (!openers.length) return;
+    Array.prototype.forEach.call(openers, function (btn) {
+      var dlg = document.getElementById(btn.getAttribute('data-panel'));
+      if (!dlg || typeof dlg.showModal !== 'function') return;
+      btn.addEventListener('click', function () {
+        dlg.showModal();
+        document.body.classList.add('has-lightbox');
+        var body = dlg.querySelector('.panel__body');
+        if (body) body.scrollTop = 0;
+        track('panel_opened', { panel: dlg.id });
+      });
+      if (dlg.dataset.wired) return;
+      dlg.dataset.wired = '1';
+      dlg.addEventListener('click', function (e) {
+        // the backdrop is the dialog itself; the body is a child of it
+        if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+      });
+      dlg.addEventListener('close', function () {
+        document.body.classList.remove('has-lightbox');
+        if (btn.focus) btn.focus();
+      });
+    });
   }
 
   /* ------------------------------------------------------------------
@@ -274,6 +306,7 @@
   players();
   lightbox();
   reader();
+  panels();
   linked();
   printing();
   console_();
