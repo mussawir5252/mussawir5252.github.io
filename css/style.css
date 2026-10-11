@@ -593,20 +593,6 @@ body.has-lightbox { overflow: hidden; }
 .essay__full[open] .essay__toggle-less { display: inline; }
 .essay__full[open] > .prose { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
 
-/* An abstract folded into a record entry, under its citation. */
-.record__abstract { margin-top: 0.1rem; }
-.record__abstract > summary { font-size: 0.9rem; }
-.record__abstract .prose { max-width: 60ch; margin-bottom: 0; }
-/* Four paragraphs in a third of a row is a ribbon. Opened, the group it
-   belongs to takes the full width; browsers without :has() keep the column. */
-@media (min-width: 900px) {
-  .record__group:has(.record__abstract[open]) { grid-column: 1 / -1; }
-}
-.record__abstract .prose p { font-size: 0.95rem; }
-.record__abstract[open] > .prose { margin-top: 0.75rem; }
-/* A linked entry is worth marking, so the jump lands somewhere visible. */
-.record__list li:target { scroll-margin-top: 6rem; }
-
 .courses {
   display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
   grid-template-columns: 1fr;
@@ -722,6 +708,25 @@ body.has-lightbox { overflow: hidden; }
 .record__list li { display: grid; gap: 0.15rem; margin-bottom: 1.1rem; }
 .record__when { color: var(--accent-text); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 .record__what { color: var(--ink-2); font-size: 0.95em; }
+
+/* ----------------------------------------------------------------------------
+   The conference paper. The citation sits in the left column, the abstract in
+   the right, so the text holds a reading measure instead of the page width.
+   ---------------------------------------------------------------------------- */
+.paper__grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  .paper__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); }
+  .paper__head { position: sticky; top: 6rem; align-self: start; }
+}
+.paper__title {
+  margin-top: 0.4rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.25;
+  max-width: 24ch;
+}
+.paper__where { margin-top: 0.75rem; font-size: 0.95rem; font-style: italic; color: var(--ink-3); }
+.paper__body { max-width: none; margin-bottom: 0; }
+.paper__body p + p { margin-top: 1rem; }
 
 /* --------------------------------------------------------------------------
    Contact
