@@ -593,6 +593,20 @@ body.has-lightbox { overflow: hidden; }
 .essay__full[open] .essay__toggle-less { display: inline; }
 .essay__full[open] > .prose { margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
 
+/* An abstract folded into a record entry, under its citation. */
+.record__abstract { margin-top: 0.1rem; }
+.record__abstract > summary { font-size: 0.9rem; }
+.record__abstract .prose { max-width: 60ch; margin-bottom: 0; }
+/* Four paragraphs in a third of a row is a ribbon. Opened, the group it
+   belongs to takes the full width; browsers without :has() keep the column. */
+@media (min-width: 900px) {
+  .record__group:has(.record__abstract[open]) { grid-column: 1 / -1; }
+}
+.record__abstract .prose p { font-size: 0.95rem; }
+.record__abstract[open] > .prose { margin-top: 0.75rem; }
+/* A linked entry is worth marking, so the jump lands somewhere visible. */
+.record__list li:target { scroll-margin-top: 6rem; }
+
 .courses {
   display: grid; gap: 2rem clamp(2rem, 5vw, 4rem);
   grid-template-columns: 1fr;

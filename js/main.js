@@ -207,6 +207,27 @@
   }
 
   /* ------------------------------------------------------------------
+     A link to a folded section should arrive with it open. Without this
+     the address works and the reader lands on a closed summary.
+     ------------------------------------------------------------------ */
+  function linked() {
+    function reveal() {
+      var id = (location.hash || '').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      var fold = target.matches('details') ? target : target.querySelector('details');
+      if (!fold) fold = target.closest('details');
+      if (fold && !fold.open) {
+        fold.open = true;
+        target.scrollIntoView();
+      }
+    }
+    reveal();
+    window.addEventListener('hashchange', reveal);
+  }
+
+  /* ------------------------------------------------------------------
      A folded statement should still print in full.
      ------------------------------------------------------------------ */
   function printing() {
@@ -253,6 +274,7 @@
   players();
   lightbox();
   reader();
+  linked();
   printing();
   console_();
   setText('year', String(new Date().getFullYear()));
