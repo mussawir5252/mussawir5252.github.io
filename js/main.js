@@ -35,9 +35,9 @@
   }
 
   /* ------------------------------------------------------------------
-     Two clocks. Storrs and Lahore. Never the same time twice.
+     The clock in Storrs. Never the same time twice.
      ------------------------------------------------------------------ */
-  function clocks() {
+  function clock() {
     function fmt(zone) {
       try {
         return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: zone }).format(new Date());
@@ -45,7 +45,6 @@
     }
     function tick() {
       setText('time-storrs', fmt('America/New_York'));
-      setText('time-lahore', fmt('Asia/Karachi'));
     }
     tick();
     setInterval(tick, 15000);
@@ -250,7 +249,7 @@
 
   /* ------------------------------------------------------------------ */
   theme();
-  clocks();
+  clock();
   players();
   lightbox();
   reader();
