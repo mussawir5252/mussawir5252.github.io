@@ -292,6 +292,22 @@ main { position: relative; z-index: 1; }
   background: linear-gradient(180deg, transparent 60%, rgba(31, 28, 43, 0.25));
 }
 .frame--link { display: block; }
+/* A frame with no photograph in it: the title set on the paper ground. */
+.frame--type {
+  display: grid; place-items: center;
+  padding: 1.5rem;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+}
+.frame__type {
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-style: italic;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ink);
+  transition: color var(--quick);
+}
+.frame--type:hover .frame__type, .frame--type:focus-visible .frame__type { color: var(--accent-text); }
 /* A placeholder panel: a title where a still will go. */
 .frame--note { display: grid; place-items: center; background: #16141f; }
 .frame__note {
