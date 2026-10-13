@@ -91,7 +91,8 @@
     var vid = document.getElementById('lightbox-video');
     var time = document.getElementById('lightbox-time');
     var label = document.getElementById('lightbox-label');
-    var items = Array.prototype.slice.call(document.querySelectorAll('[data-full], [data-video]'));
+    var embed = document.getElementById('lightbox-embed');
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-full], [data-video], [data-embed]'));
     if (!dlg || !img || !items.length || typeof dlg.showModal !== 'function') return;
     var fallback = label ? label.textContent : '';
     var index = 0, opener = null, touchX = null;
@@ -100,13 +101,28 @@
       index = (i + items.length) % items.length;
       var el = items[index];
       var movie = el.getAttribute('data-video');
+      var player = el.getAttribute('data-embed');
       if (vid) {
         vid.pause();
         vid.hidden = !movie;
         if (movie) { vid.src = movie; } else { vid.removeAttribute('src'); vid.load(); }
       }
-      img.hidden = !!movie;
-      if (!movie) {
+      // The player is built on arrival and torn down on the way out, so the
+      // sound stops with the slide and nothing is fetched until it is asked for.
+      if (embed) {
+        embed.hidden = !player;
+        embed.innerHTML = '';
+        if (player) {
+          var frame = document.createElement('iframe');
+          frame.src = player + (player.indexOf('?') < 0 ? '?' : '&') + 'title=0&byline=0&portrait=0';
+          frame.title = el.getAttribute('data-caption') || 'Video';
+          frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          frame.allowFullscreen = true;
+          embed.appendChild(frame);
+        }
+      }
+      img.hidden = !!(movie || player);
+      if (!movie && !player) {
         img.src = el.getAttribute('data-full');
         var inner = el.querySelector('img');
         img.alt = el.getAttribute('data-alt') || (inner ? inner.alt : '');
@@ -157,6 +173,7 @@
     dlg.addEventListener('close', function () {
       document.body.classList.remove('has-lightbox');
       if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
+      if (embed) { embed.innerHTML = ''; embed.hidden = true; }
       img.removeAttribute('src');
       if (opener) opener.focus();
     });
