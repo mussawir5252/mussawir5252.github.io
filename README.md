@@ -29,7 +29,8 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
   the top of each `<body>`, the perforations are a repeating mask in the
   stylesheet, and `reel()` in `js/main.js` sets how far it has filled. It is
   decoration: without the script it simply stays empty, it reads full on a page
-  short enough not to scroll, and it is off on screens under 1100px.
+  short enough not to scroll, and it is off below 1280px, where the gutter is
+  too narrow to hold it clear of the text.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
 
 ## Local preview
