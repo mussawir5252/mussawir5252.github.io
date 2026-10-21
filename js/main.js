@@ -248,6 +248,32 @@
   }
 
   /* ------------------------------------------------------------------
+     How far the page has run. The strip is decoration, so it simply
+     stays empty where this never runs.
+     ------------------------------------------------------------------ */
+  function reel() {
+    var bar = document.querySelector('.reel');
+    if (!bar) return;
+    var queued = false;
+    function set() {
+      queued = false;
+      var run = document.documentElement.scrollHeight - window.innerHeight;
+      // A page that does not scroll would show a strip that never fills.
+      bar.hidden = run < 1;
+      var at = run > 0 ? window.pageYOffset / run : 0;
+      bar.style.setProperty('--reel', Math.max(0, Math.min(1, at)).toFixed(4));
+    }
+    function ask() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(set);
+    }
+    window.addEventListener('scroll', ask, { passive: true });
+    window.addEventListener('resize', ask);
+    set();
+  }
+
+  /* ------------------------------------------------------------------
      Writing that opens over the page rather than beside it.
      ------------------------------------------------------------------ */
   function panels() {
@@ -323,6 +349,7 @@
   players();
   lightbox();
   reader();
+  reel();
   panels();
   linked();
   printing();

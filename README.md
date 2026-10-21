@@ -25,6 +25,11 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
   right when served fresh and wrong in the browser that has been there before.
 - `css/style.css` holds the design. Colors and type are CSS variables at the top.
 - `js/main.js` holds the small interactions. Each one is a short, named function.
+- The film strip down the left edge is the scroll indicator. The markup sits at
+  the top of each `<body>`, the perforations are a repeating mask in the
+  stylesheet, and `reel()` in `js/main.js` sets how far it has filled. It is
+  decoration: without the script it simply stays empty, and it hides itself on
+  a page that does not scroll and on screens under 1100px.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
 
 ## Local preview
