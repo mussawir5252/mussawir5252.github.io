@@ -31,7 +31,9 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
   decoration: without the script it simply stays empty, it reads full on a page
   short enough not to scroll, and it runs at every width: `--reel-w` steps
   from 14px to 20px to 27px so the strip always sits inside the gutter, and
-  the perforation mask carries a viewBox so the holes scale with it.
+  the perforation mask carries a viewBox so the holes scale with it. Every
+  page carries the same markup; 404 sets the fill inline, since it does not
+  scroll and does not load the script.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
 
 ## Local preview
