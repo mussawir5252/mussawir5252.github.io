@@ -185,6 +185,13 @@ main { position: relative; z-index: 1; }
   color: var(--accent-text); border-color: var(--accent);
 }
 .theme svg { width: 1.4rem; height: auto; display: block; }
+/* The pane slides across the frame: left in light, right in dark. The guard
+   lets an explicit choice beat the system preference, as the palette does. */
+.theme__knob { transition: transform var(--quick) var(--ease); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme__knob { transform: translateX(9px); }
+}
+:root[data-theme="dark"] .theme__knob { transform: translateX(9px); }
 .top__links a {
   display: inline-block; position: relative; padding: 0.4rem 0; color: var(--ink-2);
   font-size: 0.95rem;
