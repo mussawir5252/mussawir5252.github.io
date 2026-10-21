@@ -29,8 +29,9 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
   the top of each `<body>`, the perforations are a repeating mask in the
   stylesheet, and `reel()` in `js/main.js` sets how far it has filled. It is
   decoration: without the script it simply stays empty, it reads full on a page
-  short enough not to scroll, and it is off below 1280px, where the gutter is
-  too narrow to hold it clear of the text.
+  short enough not to scroll, and it runs at every width: `--reel-w` steps
+  from 14px to 20px to 27px so the strip always sits inside the gutter, and
+  the perforation mask carries a viewBox so the holes scale with it.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
 
 ## Local preview

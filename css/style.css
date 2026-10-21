@@ -100,25 +100,30 @@ html {
    are a repeating mask, so the run fits any height without counting them.
    -------------------------------------------------------------------------- */
 .reel {
-  position: fixed; left: 0; top: 0; bottom: 0; width: 54px;
+  position: fixed; left: 0; top: 0; bottom: 0;
   z-index: 60; pointer-events: none;   /* over the sticky header, which otherwise washes the first holes out */
+  /* One width drives the strip and the holes in it. The mask carries a
+     viewBox, so the whole cell scales with mask-size. */
+  --reel-w: 14px;
+  width: var(--reel-w);
   background: var(--line);
   /* 35mm proportions: a perforation is wider than it is tall, about 1.4 to 1,
      and takes a little over 40 per cent of the pitch, so the gaps run longer
      than the holes. */
-  --hole: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='57'%3E%3Crect x='9' y='18' width='36' height='24' rx='5.4' fill='%23000'/%3E%3C/svg%3E");
+  --hole: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 54 57' width='54' height='57'%3E%3Crect x='9' y='18' width='36' height='24' rx='5.4' fill='%23000'/%3E%3C/svg%3E");
   -webkit-mask-image: var(--hole); mask-image: var(--hole);
   -webkit-mask-repeat: repeat-y; mask-repeat: repeat-y;
-  -webkit-mask-size: 54px 57px; mask-size: 54px 57px;
+  -webkit-mask-size: var(--reel-w) calc(var(--reel-w) * 57 / 54);
+  mask-size: var(--reel-w) calc(var(--reel-w) * 57 / 54);
 }
+/* The strip has to stay inside the gutter, which grows with the viewport. */
+@media (min-width: 700px)  { .reel { --reel-w: 20px; } }
+@media (min-width: 1280px) { .reel { --reel-w: 27px; } }
 .reel__fill {
   position: absolute; inset: 0;
   background: var(--accent);
   transform-origin: top; transform: scaleY(var(--reel, 0));
 }
-/* At this size the strip needs a wide gutter; below it the text would run
-   under the perforations. */
-@media (max-width: 1279px) { .reel { display: none; } }
 @media print { .reel { display: none; } }
 
 body {
