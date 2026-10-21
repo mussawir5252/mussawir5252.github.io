@@ -258,9 +258,9 @@
     function set() {
       queued = false;
       var run = document.documentElement.scrollHeight - window.innerHeight;
-      // A page that does not scroll would show a strip that never fills.
-      bar.hidden = run < 1;
-      var at = run > 0 ? window.pageYOffset / run : 0;
+      // A page short enough not to scroll has been seen in full, so the strip
+      // reads full rather than sitting at nothing.
+      var at = run > 0 ? window.pageYOffset / run : 1;
       bar.style.setProperty('--reel', Math.max(0, Math.min(1, at)).toFixed(4));
     }
     function ask() {

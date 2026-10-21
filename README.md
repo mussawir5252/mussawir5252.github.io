@@ -28,8 +28,8 @@ Plain HTML, CSS, and JavaScript. No build step. Served by GitHub Pages from the 
 - The film strip down the left edge is the scroll indicator. The markup sits at
   the top of each `<body>`, the perforations are a repeating mask in the
   stylesheet, and `reel()` in `js/main.js` sets how far it has filled. It is
-  decoration: without the script it simply stays empty, and it hides itself on
-  a page that does not scroll and on screens under 1100px.
+  decoration: without the script it simply stays empty, it reads full on a page
+  short enough not to scroll, and it is off on screens under 1100px.
 - `assets/img/` holds images. Keep new stills at 4:3 or 16:9 and under 400 KB.
 
 ## Local preview
